@@ -230,6 +230,18 @@ img {
   font-weight: 500;
 }
 
+.grid-calc-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.grid-calc-main .field-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -966,60 +978,62 @@ img {
               <input class="field-input" id="Tx_ToplamGelir" name="Tx_ToplamGelir" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false">
             </div>
 
-            <div class="grid-2">
-              <div class="field">
-                <label class="field-label" for="Tx_ToplamInsaatAlan">Toplam İnşaat Alanı [ m² ]</label>
-                <input class="field-input" id="Tx_ToplamInsaatAlan" name="Tx_ToplamInsaatAlan" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false">
-              </div>
-              <div class="field">
-                <label class="field-label" for="Tx_BirimFiyat">İnşaat m² Birim Fiyat [ TL ]</label>
-                <input class="field-input" id="Tx_BirimFiyat" name="Tx_BirimFiyat" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false">
-              <div class="field-select-wrap">
-                <select id="Sel_BirimFiyat" class="field-select" aria-label="2026 Tebliğ Yapı Sınıfı Seçimi">
-                  <option value="">-- 2026 Tebliğ Fiyatı Seçin --</option>
-                  <optgroup label="I. SINIF YAPILAR">
-                    <option value="2600">I-A: 2.600 TL (Kulübe, baraka, basit sundurma)</option>
-                    <option value="4200">I-B: 4.200 TL (Basit tarım yapıları, fidanlık vb.)</option>
-                  </optgroup>
-                  <optgroup label="II. SINIF YAPILAR">
-                    <option value="6900">II-A: 6.900 TL (Kuleler, tek katlı ambarlar vb.)</option>
-                    <option value="10350">II-B: 10.350 TL (Pazar yerleri, seralar vb.)</option>
-                    <option value="12600">II-C: 12.600 TL (Hangarlar, atölyeler, depolar vb.)</option>
-                  </optgroup>
-                  <optgroup label="III. SINIF YAPILAR">
-                    <option value="17250">III-A: 17.250 TL (Okullar, kreşler, 3 kata kadar konut)</option>
-                    <option value="21050">III-B: 21.050 TL (Entegre sanayi, oteller, konutlar)</option>
-                  </optgroup>
-                  <optgroup label="IV. SINIF YAPILAR">
-                    <option value="23050">IV-A: 23.050 TL (İş merkezleri, yurtlar, poliklinik)</option>
-                    <option value="25250">IV-B: 25.250 TL (Hastaneler, müzeler, üniversiteler)</option>
-                    <option value="29900">IV-C: 29.900 TL (Büyük kütüphaneler, adliye binaları)</option>
-                  </optgroup>
-                  <optgroup label="V. SINIF YAPILAR">
-                    <option value="37450">V-A: 37.450 TL (Bakanlık binaları, elçilikler, lüks konut)</option>
-                    <option value="42600">V-B: 42.600 TL (Kongre merkezleri, opera binaları)</option>
-                    <option value="49400">V-C: 49.400 TL (Havalimanı terminalleri, veri merkezleri)</option>
-                    <option value="62100">V-D: 62.100 TL (Olimpik stadyumlar, nükleer yapılar)</option>
-                  </optgroup>
-                </select>
-              </div>
-              <div class="select-hint-row">
-                <span style="color:var(--muted)">veya elle girin</span>
-                <button type="button" id="Btn_MaliyetDetay" class="btn-link">Maddeleri Gör »</button>
+            <div class="grid-2 grid-calc-main">
+              <div class="field-col">
+                <div class="field">
+                  <label class="field-label" for="Tx_KarOran">Müteahhit Kar Oranı [ % ]</label>
+                  <input class="field-input" id="Tx_KarOran" name="Tx_KarOran" type="text" inputmode="decimal" pattern="[0-9.,]*" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" value="20" placeholder="Örn: 20">
+                </div>
+                <div class="field" style="margin-top: 14px;">
+                  <label class="field-label" for="Tx_ToplamInsaatAlan">Toplam İnşaat Alanı [ m² ]</label>
+                  <input class="field-input" id="Tx_ToplamInsaatAlan" name="Tx_ToplamInsaatAlan" type="text" inputmode="decimal" pattern="[0-9.,]*" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false">
+                </div>
               </div>
 
+              <div class="field-col">
+                <div class="field">
+                  <label class="field-label" for="Tx_BirimFiyat">İnşaat m² Birim Fiyat [ TL ]</label>
+                  <input class="field-input" id="Tx_BirimFiyat" name="Tx_BirimFiyat" type="text" inputmode="decimal" pattern="[0-9.,]*" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false">
+                  <div class="field-select-wrap">
+                    <select id="Sel_BirimFiyat" class="field-select" aria-label="2026 Tebliğ Yapı Sınıfı Seçimi">
+                      <option value="">-- 2026 Tebliğ Fiyatı Seçin --</option>
+                      <optgroup label="I. SINIF YAPILAR">
+                        <option value="2600">I-A: 2.600 TL (Kulübe, baraka, basit sundurma)</option>
+                        <option value="4200">I-B: 4.200 TL (Basit tarım yapıları, fidanlık vb.)</option>
+                      </optgroup>
+                      <optgroup label="II. SINIF YAPILAR">
+                        <option value="6900">II-A: 6.900 TL (Kuleler, tek katlı ambarlar vb.)</option>
+                        <option value="10350">II-B: 10.350 TL (Pazar yerleri, seralar vb.)</option>
+                        <option value="12600">II-C: 12.600 TL (Hangarlar, atölyeler, depolar vb.)</option>
+                      </optgroup>
+                      <optgroup label="III. SINIF YAPILAR">
+                        <option value="17250">III-A: 17.250 TL (Okullar, kreşler, 3 kata kadar konut)</option>
+                        <option value="21050">III-B: 21.050 TL (Entegre sanayi, oteller, konutlar)</option>
+                      </optgroup>
+                      <optgroup label="IV. SINIF YAPILAR">
+                        <option value="23050">IV-A: 23.050 TL (İş merkezleri, yurtlar, poliklinik)</option>
+                        <option value="25250">IV-B: 25.250 TL (Hastaneler, müzeler, üniversiteler)</option>
+                        <option value="29900">IV-C: 29.900 TL (Büyük kütüphaneler, adliye binaları)</option>
+                      </optgroup>
+                      <optgroup label="V. SINIF YAPILAR">
+                        <option value="37450">V-A: 37.450 TL (Bakanlık binaları, elçilikler, lüks konut)</option>
+                        <option value="42600">V-B: 42.600 TL (Kongre merkezleri, opera binaları)</option>
+                        <option value="49400">V-C: 49.400 TL (Havalimanı terminalleri, veri merkezleri)</option>
+                        <option value="62100">V-D: 62.100 TL (Olimpik stadyumlar, nükleer yapılar)</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div class="select-hint-row">
+                    <span style="color:var(--muted)">veya elle girin</span>
+                    <button type="button" id="Btn_MaliyetDetay" class="btn-link">Maddeleri Gör »</button>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="grid-2">
-              <div class="field">
-                <label class="field-label" for="Tx_KarPayi">Müteahhit Kar Payı [ TL ]</label>
-                <input class="field-input" id="Tx_KarPayi" name="Tx_KarPayi" type="text" readonly aria-readonly="true" tabindex="-1">
-              </div>
-              <div class="field">
-                <label class="field-label" for="Tx_KarOran">Müteahhit Kar Oranı [ % ]</label>
-                <input class="field-input" id="Tx_KarOran" name="Tx_KarOran" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Örn: 20">
-              </div>
+            <div class="field">
+              <label class="field-label" for="Tx_KarPayi">Müteahhit Kar Payı [ TL ]</label>
+              <input class="field-input" id="Tx_KarPayi" name="Tx_KarPayi" type="text" readonly aria-readonly="true" tabindex="-1">
             </div>
 
             <div class="field">
@@ -1190,11 +1204,11 @@ img {
   var FIELD_IDS = [
     'Tx_Alan',
     'Tx_ToplamGelir',
-    'Tx_ToplamInsaatAlan',
-    'Tx_BirimFiyat',
-    'Tx_ToplamInsaatMaliyet',
-    'Tx_KarPayi',
     'Tx_KarOran',
+    'Tx_BirimFiyat',
+    'Tx_ToplamInsaatAlan',
+    'Tx_KarPayi',
+    'Tx_ToplamInsaatMaliyet',
     'Tx_ArsaBirimBedel',
     'Tx_TersineArsaBedel',
     'Tx_TersineToplamGelir',

@@ -1,0 +1,8 @@
+# Büyük dosyalar ve geçici dosyalar
+*.apk
+*.zip
+*.bak
+*.py
+*.png
+*.js
+scratch/

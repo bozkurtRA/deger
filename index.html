@@ -1634,62 +1634,73 @@ img {
   }
 
   /* Kullanıcı yazarken canlı formatlama (İmleç pozisyonunu korur) */
-  function formatInputLive(el) {
+  /* Kullanıcı yazarken canlı formatlama (imleç pozisyonunu korur) */
+  function formatInputLive(el, event) {
     var raw = el.value;
     if (!raw) return;
 
-    var cursorPos = el.selectionStart || raw.length;
-    // İmleçten önceki sadece rakam ve virgül karakterlerinin sayısını bulalım
+    var cursorPos = el.selectionStart !== null ? el.selectionStart : raw.length;
+
+    var isDotKey = (event && (event.data === '.' || (event.inputType && event.inputType.indexOf('Dot') !== -1)));
+
+    // 1. Kullanıcı '.' tuşuna bastıysa veya metin '.' ile bitiyorsa, bunu virgüle çevir
+    if (isDotKey || /\.$/.test(raw)) {
+      if (raw.indexOf(',') === -1) {
+        raw = raw.replace(/\.$/, ',');
+      }
+    }
+
+    // 2. Eğer metinde virgül yoksa ve son nokta 1-2 basamakla bitiyorsa (örn. 125.75 veya 10.5), bu bir ondalık noktadır
+    if (raw.indexOf(',') === -1) {
+      var decDotMatch = raw.match(/\.(\d{1,2})$/);
+      if (decDotMatch) {
+        var lastDotIdx = raw.lastIndexOf('.');
+        raw = raw.substring(0, lastDotIdx) + ',' + raw.substring(lastDotIdx + 1);
+      }
+    }
+
+    // İmleçten önceki anlamlı karakterlerin (rakam ve virgül) sayısını bul
     var textBefore = raw.substring(0, cursorPos);
-    // Eğer kullanıcı . tuşuna basmışsa onu ondalık virgül niyetine algılayabiliriz
-    // Ancak sadece tek bir ondalık ayracı tutulur
-    var digitsBefore = 0;
+    var rawMeaningfulBefore = 0;
     for (var i = 0; i < textBefore.length; i++) {
       var ch = textBefore[i];
-      if ((ch >= '0' && ch <= '9') || ch === ',' || ch === '.') {
-        digitsBefore++;
+      if ((ch >= '0' && ch <= '9') || ch === ',') {
+        rawMeaningfulBefore++;
       }
     }
 
-    // Sadece rakam, virgül ve nokta kabul edilir
-    // Nokta basıldıysa ve henüz virgül yoksa onu virgüle çevir
-    var hasCommaAlready = raw.indexOf(',') !== -1;
-    var sanitized = '';
-    for (var j = 0; j < raw.length; j++) {
-      var c = raw[j];
-      if (c >= '0' && c <= '9') {
-        sanitized += c;
-      } else if (c === ',' && sanitized.indexOf(',') === -1) {
-        sanitized += ',';
-      } else if (c === '.' && sanitized.indexOf(',') === -1) {
-        // Noktayı ondalık ayracı virgül olarak kabul et
-        sanitized += ',';
-      }
-    }
+    // Sadece virgül (,) ondalık ayracı olarak kabul edilir
+    var hasComma = raw.indexOf(',') !== -1;
+    var parts = raw.split(',');
 
-    if (!sanitized) {
+    // Tamsayı kısmı: Noktalar ve tüm rakam dışı karakterler atılır
+    var intDigits = parts[0].replace(/\D/g, '');
+    if (!intDigits && !hasComma) {
       el.value = '';
       return;
     }
-
-    var parts = sanitized.split(',');
-    var intRaw = parts[0] || '0';
-    // Baştaki anlamsız sıfırları temizle (tek başına '0' hariç)
-    if (intRaw.length > 1 && intRaw.charAt(0) === '0') {
-      intRaw = intRaw.replace(/^0+/, '') || '0';
+    if (!intDigits && hasComma) {
+      intDigits = '0';
     }
-    var intFormatted = intRaw.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    
+
+    // Baştaki gereksiz sıfırları temizle ('0' hariç)
+    if (intDigits.length > 1 && intDigits.charAt(0) === '0') {
+      intDigits = intDigits.replace(/^0+/, '') || '0';
+    }
+
+    // Tamsayı kısmına 3 basamakta bir binlik nokta (.) ekle
+    var intFormatted = intDigits.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
     var formatted = intFormatted;
-    if (parts.length > 1) {
-      // Virgülden sonra en fazla 2 basamak
-      var decRaw = parts[1].substring(0, 2);
-      formatted += ',' + decRaw;
+    if (hasComma) {
+      // Ondalık kısım: Sadece rakamlar ve en fazla 2 basamak
+      var decDigits = (parts[1] || '').replace(/\D/g, '').substring(0, 2);
+      formatted += ',' + decDigits;
     }
 
     el.value = formatted;
 
-    // Yeni imleç pozisyonunu ayarla
+    // İmleç pozisyonunu doğru yere konumlandır
     var newPos = 0;
     var count = 0;
     for (var k = 0; k < formatted.length; k++) {
@@ -1697,13 +1708,14 @@ img {
       if ((fc >= '0' && fc <= '9') || fc === ',') {
         count++;
       }
-      if (count <= digitsBefore) {
+      if (count <= rawMeaningfulBefore) {
         newPos = k + 1;
       }
     }
+
     try {
       el.setSelectionRange(newPos, newPos);
-    } catch (e) {}
+    } catch (err) {}
   }
 
   function allFilled(ids) {
@@ -1886,8 +1898,8 @@ img {
     var el = fields[id];
     if (!el) return;
 
-    el.addEventListener('input', function () {
-      formatInputLive(el);
+    el.addEventListener('input', function (event) {
+      formatInputLive(el, event);
       if (handlers[id]) {
         handlers[id]();
       }

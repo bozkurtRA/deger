@@ -16,5 +16,4 @@ Uygulamayı tarayıcınızda açtıktan sonra:
 - **Android:** Chrome'da sağ üstteki üç noktaya basıp **"Ana Ekrana Ekle"** seçeneğini seçin.
 
 ---
-**Geliştirici:** Ramazan BOZKURT  
-**E-posta:** ramazan.bozkurt@tedas.gov.tr  
+**Geliştirici:** Ramazan BOZKURT

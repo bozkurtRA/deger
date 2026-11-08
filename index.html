@@ -173,7 +173,7 @@ img {
   display: block;
   width: 100%;
   min-width: 0;
-  height: 46px;
+  height: 35px;
   margin: 0;
   padding: 0 14px;
   border: 1px solid rgba(17, 17, 17, 0.045);
@@ -260,8 +260,8 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 46px;
+  width: 38px;
+  height: 35px;
   padding: 0;
   border: 0;
   border-radius: 10px;
@@ -274,7 +274,7 @@ img {
 
 .clear-button img {
   display: block;
-  width: 37px;
+  width: 27px;
   height: auto;
   pointer-events: none;
   user-select: none;
@@ -862,7 +862,7 @@ img {
 .field-select {
   display: block;
   width: 100%;
-  height: 40px;
+  height: 35px;
   padding: 0 32px 0 10px;
   border: 1px solid #c7d2fe;
   border-radius: var(--radius);
@@ -963,6 +963,34 @@ img {
             <div class="field">
               <label class="field-label" for="Tx_ToplamGelir">Toplam Gelir [ TL ]</label>
               <input class="field-input" id="Tx_ToplamGelir" name="Tx_ToplamGelir" type="text" inputmode="decimal" pattern="[0-9.,]*" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false">
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label class="field-label" for="Tx_TAKS">TAKS [ Taban Alanı Kat Sayısı ]</label>
+                <input class="field-input" id="Tx_TAKS" name="Tx_TAKS" type="text" inputmode="decimal" pattern="[0-9.,]*" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Örn: 0,30">
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="Tx_KAKS">KAKS [ Emsal ]</label>
+                <input class="field-input" id="Tx_KAKS" name="Tx_KAKS" type="text" inputmode="decimal" pattern="[0-9.,]*" enterkeyhint="next" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Örn: 1,50">
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label class="field-label" for="Tx_TabanAlan">Taban Alanı [ m² ]</label>
+                <input class="field-input" id="Tx_TabanAlan" name="Tx_TabanAlan" type="text" readonly aria-readonly="true" tabindex="-1">
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="Tx_HesapInsaatAlan">Hesaplanan İnşaat Alanı [ m² ]</label>
+                <input class="field-input" id="Tx_HesapInsaatAlan" name="Tx_HesapInsaatAlan" type="text" readonly aria-readonly="true" tabindex="-1">
+                <div class="select-hint-row">
+                  <span style="color:var(--muted)">veya elle girin</span>
+                  <button type="button" id="Btn_AktarInsaatAlan" class="btn-link">Alanı Aktar »</button>
+                </div>
+              </div>
             </div>
 
             <div class="grid-2">
@@ -1194,6 +1222,10 @@ img {
   var FIELD_IDS = [
     'Tx_Alan',
     'Tx_ToplamGelir',
+    'Tx_TAKS',
+    'Tx_KAKS',
+    'Tx_TabanAlan',
+    'Tx_HesapInsaatAlan',
     'Tx_ToplamInsaatAlan',
     'Tx_BirimFiyat',
     'Tx_KarOran',
@@ -1217,6 +1249,8 @@ img {
   var EDITABLE_IDS = [
     'Tx_Alan',
     'Tx_ToplamGelir',
+    'Tx_TAKS',
+    'Tx_KAKS',
     'Tx_ToplamInsaatAlan',
     'Tx_BirimFiyat',
     'Tx_KarOran',
@@ -1227,6 +1261,8 @@ img {
     'Tx_DDO',
     'Tx_MulHakMik'
   ];
+
+  var CLEAR_IDS = FIELD_IDS;
 
   var MALIYET_DATA = [
   {
@@ -1752,6 +1788,21 @@ img {
   }
 
   /* Hesaplama Fonksiyonları — Sonuçlar daima formatTR() ile yazılır */
+  function calcImar() {
+    var alan = num('Tx_Alan');
+    if (alan > 0 && !isEmpty(value('Tx_TAKS'))) {
+      setValue('Tx_TabanAlan', formatTR(alan * num('Tx_TAKS')));
+    } else {
+      setValue('Tx_TabanAlan', '');
+    }
+
+    if (alan > 0 && !isEmpty(value('Tx_KAKS'))) {
+      setValue('Tx_HesapInsaatAlan', formatTR(alan * num('Tx_KAKS')));
+    } else {
+      setValue('Tx_HesapInsaatAlan', '');
+    }
+  }
+
   function calcKarPayi() {
     if (!isEmpty(value('Tx_ToplamGelir')) && !isEmpty(value('Tx_KarOran'))) {
       setValue('Tx_KarPayi', formatTR((num('Tx_ToplamGelir') * num('Tx_KarOran')) / 100));
@@ -1849,7 +1900,10 @@ img {
     Tx_Alan: function () {
       calcArsa();
       calcTersine();
+      calcImar();
     },
+    Tx_TAKS: calcImar,
+    Tx_KAKS: calcImar,
     Tx_ToplamInsaatAlan: function () {
       calcMaliyet();
       calcArsa();
@@ -1879,6 +1933,7 @@ img {
   };
 
   function triggerAllCalcs() {
+    calcImar();
     calcKarPayi();
     calcMaliyet();
     calcArsa();
@@ -2076,7 +2131,7 @@ img {
         } else if (e.type === 'click') {
           if (Date.now() - lastMaliyetDetayTouch < 450) return;
         }
-        e.stopPropagation();
+        if (e.stopPropagation) e.stopPropagation();
       }
       activateTab('maliyet');
       try {
@@ -2087,6 +2142,34 @@ img {
     }
     btnMaliyetDetay.addEventListener('touchend', handleMaliyetDetay, { passive: false });
     btnMaliyetDetay.addEventListener('click', handleMaliyetDetay);
+  }
+
+  // Hesaplanan inşaat alanını Toplam İnşaat Alanına aktarma butonu
+  var btnAktar = document.getElementById('Btn_AktarInsaatAlan');
+  if (btnAktar) {
+    var lastAktarTouch = 0;
+    function handleAktar(e) {
+      if (e) {
+        if (e.type === 'touchend') {
+          lastAktarTouch = Date.now();
+          if (e.cancelable) e.preventDefault();
+        } else if (e.type === 'click') {
+          if (Date.now() - lastAktarTouch < 450) return;
+        }
+        if (e.stopPropagation) e.stopPropagation();
+      }
+      var hVal = value('Tx_HesapInsaatAlan');
+      if (hVal) {
+        setValue('Tx_ToplamInsaatAlan', hVal);
+        calcMaliyet();
+        calcArsa();
+        calcTersine();
+        saveState();
+        showToast('İnşaat alanı aktarıldı');
+      }
+    }
+    btnAktar.addEventListener('touchend', handleAktar, { passive: false });
+    btnAktar.addEventListener('click', handleAktar);
   }
 
   /* Birim Maliyetler Sekmesi: Arama ve Render */
@@ -2162,7 +2245,7 @@ img {
           } else if (e.type === 'click') {
             if (Date.now() - lastBtnTouch < 450) return;
           }
-          e.stopPropagation();
+          if (e.stopPropagation) e.stopPropagation();
         }
         var f = parseFloat(b.getAttribute('data-fiyat'));
         var lbl = b.getAttribute('data-label');
@@ -2191,7 +2274,7 @@ img {
     function handleClearSearch(e) {
       if (e) {
         if (e.cancelable && e.type === 'touchend') e.preventDefault();
-        e.stopPropagation();
+        if (e.stopPropagation) e.stopPropagation();
       }
       if (searchInput) {
         searchInput.value = '';
@@ -2218,7 +2301,7 @@ img {
           } else if (e.type === 'click') {
             if (Date.now() - lastChipTouch < 450) return;
           }
-          e.stopPropagation();
+          if (e.stopPropagation) e.stopPropagation();
         }
         chips.forEach(function (c) { c.classList.remove('is-active'); });
         chip.classList.add('is-active');
@@ -2319,7 +2402,7 @@ img {
             return; // touchend sonrası tetiklenen sentetik fare tıklamasını yoksay
           }
         }
-        e.stopPropagation();
+        if (e.stopPropagation) e.stopPropagation();
       }
 
       // Mobilde açık klavye varsa kapat
@@ -2384,7 +2467,7 @@ img {
         } else if (e.type === 'click') {
           if (Date.now() - lastSilTouch < 450) return;
         }
-        e.stopPropagation();
+        if (e.stopPropagation) e.stopPropagation();
       }
       CLEAR_IDS.forEach(function (id) {
         setValue(id, '');

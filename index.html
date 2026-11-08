@@ -978,32 +978,32 @@ img {
                   <select id="Sel_BirimFiyat" class="field-select" aria-label="2026 Tebliğ Yapı Sınıfı Seçimi">
                     <option value="">-- 2026 Tebliğ Fiyatı Seçin --</option>
                     <optgroup label="I. SINIF YAPILAR">
-                      <option value="2600">I-A: 2.600 TL (Kulübe, baraka, basit sundurma, seralar)</option>
-                      <option value="3900">I-B: 3.900 TL (Basit tarım/hayvancılık yapıları, ağıl)</option>
-                      <option value="4200">I-C: 4.200 TL (Su depoları, ahır, şarj istasyonları)</option>
-                      <option value="4800">I-D: 4.800 TL (Güneş enerji santralleri - GES)</option>
+                      <option value="2600">I-A: 2.600,00 TL (Kulübe, baraka, basit sundurma, seralar)</option>
+                      <option value="3900">I-B: 3.900,00 TL (Basit tarım/hayvancılık yapıları, ağıl)</option>
+                      <option value="4200">I-C: 4.200,00 TL (Su depoları, ahır, şarj istasyonları)</option>
+                      <option value="4800">I-D: 4.800,00 TL (Güneş enerji santralleri - GES)</option>
                     </optgroup>
                     <optgroup label="II. SINIF YAPILAR">
-                      <option value="8100">II-A: 8.100 TL (Deniz iskeleleri, genel amaçlı depolar)</option>
-                      <option value="12500">II-B: 12.500 TL (Halı sahalar, pazar yerleri, hangarlar)</option>
-                      <option value="15100">II-C: 15.100 TL (Köy/yayla evleri, bungalov, mezbaha)</option>
+                      <option value="8100">II-A: 8.100,00 TL (Deniz iskeleleri, genel amaçlı depolar)</option>
+                      <option value="12500">II-B: 12.500,00 TL (Halı sahalar, pazar yerleri, hangarlar)</option>
+                      <option value="15100">II-C: 15.100,00 TL (Köy/yayla evleri, bungalov, mezbaha)</option>
                     </optgroup>
                     <optgroup label="III. SINIF YAPILAR">
-                      <option value="19800">III-A: 19.800 TL (3 kata kadar konut, kreş, istasyon)</option>
-                      <option value="21050">III-B: 21.050 TL (21.5 m'ye kadar konut, okul, otel)</option>
-                      <option value="23400">III-C: 23.400 TL (30.5 m'ye kadar konut, lise, yurt)</option>
+                      <option value="19800">III-A: 19.800,00 TL (3 kata kadar konut, kreş, istasyon)</option>
+                      <option value="21050">III-B: 21.050,00 TL (21.5 m'ye kadar konut, okul, otel)</option>
+                      <option value="23400">III-C: 23.400,00 TL (30.5 m'ye kadar konut, lise, yurt)</option>
                     </optgroup>
                     <optgroup label="IV. SINIF YAPILAR">
-                      <option value="26450">IV-A: 26.450 TL (51.5 m'ye kadar konut, 1-2 yıldızlı otel)</option>
-                      <option value="33900">IV-B: 33.900 TL (51.5 m üzeri konut, banka, düğün salonu)</option>
-                      <option value="40500">IV-C: 40.500 TL (Adliye, AVM, 3 yıldızlı otel, hastane)</option>
+                      <option value="26450">IV-A: 26.450,00 TL (51.5 m'ye kadar konut, 1-2 yıldızlı otel)</option>
+                      <option value="33900">IV-B: 33.900,00 TL (51.5 m üzeri konut, banka, düğün salonu)</option>
+                      <option value="40500">IV-C: 40.500,00 TL (Adliye, AVM, 3 yıldızlı otel, hastane)</option>
                     </optgroup>
                     <optgroup label="V. SINIF YAPILAR">
-                      <option value="42350">V-A: 42.350 TL (Elçilikler, 51.5 m üzeri iş merkezi, stat)</option>
-                      <option value="43850">V-B: 43.850 TL (Komutanlık binaları, 4 yıldızlı otel)</option>
-                      <option value="48750">V-C: 48.750 TL (Opera, tiyatro, kongre merkezi, müze)</option>
-                      <option value="53500">V-D: 53.500 TL (Havalimanı terminalleri, metro, 5 yıldız)</option>
-                      <option value="103500">V-E: 103.500 TL (Rüzgâr enerji santralleri - RES)</option>
+                      <option value="42350">V-A: 42.350,00 TL (Elçilikler, 51.5 m üzeri iş merkezi, stat)</option>
+                      <option value="43850">V-B: 43.850,00 TL (Komutanlık binaları, 4 yıldızlı otel)</option>
+                      <option value="48750">V-C: 48.750,00 TL (Opera, tiyatro, kongre merkezi, müze)</option>
+                      <option value="53500">V-D: 53.500,00 TL (Havalimanı terminalleri, metro, 5 yıldız)</option>
+                      <option value="103500">V-E: 103.500,00 TL (Rüzgâr enerji santralleri - RES)</option>
                     </optgroup>
                   </select>
                 </div>
@@ -1612,29 +1612,22 @@ img {
     return toNumber(value(id));
   }
 
-  /* Türkiye standardında formatlama: binlik ayracı ".", ondalık ayracı "," */
+  /* Türkiye standardında formatlama: binlik ayracı ".", ondalık ayracı "," (daima 2 ondalık basamak: ,00) */
   function formatTR(number) {
     if (number === '' || number === null || number === undefined || isNaN(number)) return '';
     var n = Number(number);
     if (!isFinite(n)) return '';
     
-    // En fazla 2 ondalık basamak yuvarlama
+    // En fazla 2 ondalık basamak yuvarlama ve daima 2 basamaklı format (,00)
     var rounded = Math.round(n * 100) / 100;
     var isNeg = rounded < 0;
     var absVal = Math.abs(rounded);
-    var parts = String(absVal).split('.');
+    var fixedStr = absVal.toFixed(2);
+    var parts = fixedStr.split('.');
     
     // Binlik gruplama (nokta)
     var intPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    var result = (isNeg ? '-' : '') + intPart;
-    
-    // Ondalık kısım (virgül)
-    if (parts.length > 1) {
-      var dec = parts[1];
-      if (dec.length === 1) dec += '0';
-      result += ',' + dec;
-    }
-    return result;
+    return (isNeg ? '-' : '') + intPart + ',' + parts[1];
   }
 
   /* Kullanıcı yazarken canlı formatlama (imleç pozisyonunu korur) */
@@ -1650,7 +1643,7 @@ img {
     var inputType = event && event.inputType ? event.inputType : '';
     var isDelete = inputType.indexOf('delete') !== -1;
 
-    // Kullanıcı binlik noktasının hemen arkasındayken Backspace'e bastıysa,
+    // 1. Binlik noktasının hemen arkasındayken Backspace'e bastıysa,
     // sadece nokta silindiğinde sayı değişmez ve imleç takılı kalır.
     // Kullanıcının amacı noktadan önceki basamağı silmektir.
     if (inputType === 'deleteContentBackward' && el._prevVal !== undefined && el._prevCursor !== undefined) {
@@ -1659,6 +1652,18 @@ img {
         if (targetDigitPos >= 0) {
           raw = el._prevVal.substring(0, targetDigitPos) + el._prevVal.substring(el._prevCursor);
           cursorPos = targetDigitPos;
+        }
+      }
+    }
+
+    // 2. Virgülün hemen arkasındayken Backspace'e basıldığında ve virgülden sonra sadece sıfırlar varsa (örn. 1.200,|00)
+    // virgülü ve sıfırları temizle, tamsayıyı bozma
+    if (inputType === 'deleteContentBackward' && el._prevVal !== undefined && el._prevCursor !== undefined) {
+      if (el._prevCursor > 0 && el._prevVal.charAt(el._prevCursor - 1) === ',') {
+        var decAfter = el._prevVal.substring(el._prevCursor);
+        if (/^0*$/.test(decAfter)) {
+          raw = el._prevVal.substring(0, el._prevCursor - 1);
+          cursorPos = raw.length;
         }
       }
     }
@@ -1688,7 +1693,10 @@ img {
 
     // Tamsayı kısmı: Noktalar ve tüm rakam dışı karakterler atılır
     var intDigits = parts[0].replace(/\D/g, '');
-    if (!intDigits && !hasComma) {
+    var decDigits = hasComma ? (parts[1] || '').replace(/\D/g, '').substring(0, 2) : '';
+
+    // Eğer tamsayı boşaldıysa ve virgülden sonra basamak yoksa veya hepsi sıfırsa alanı tamamen temizle (0,00 döngüsüne girmesin)
+    if (!intDigits && (!hasComma || !decDigits || /^0+$/.test(decDigits))) {
       el.value = '';
       el._prevVal = '';
       el._prevCursor = 0;
@@ -1708,8 +1716,6 @@ img {
 
     var formatted = intFormatted;
     if (hasComma) {
-      // Ondalık kısım: Sadece rakamlar ve en fazla 2 basamak
-      var decDigits = (parts[1] || '').replace(/\D/g, '').substring(0, 2);
       formatted += ',' + decDigits;
     }
 
@@ -1766,7 +1772,7 @@ img {
     if (allFilled(['Tx_ToplamGelir', 'Tx_KarPayi', 'Tx_ToplamInsaatMaliyet', 'Tx_Alan'])) {
       var alan = num('Tx_Alan');
       if (alan === 0) {
-        setValue('Tx_ArsaBirimBedel', '0');
+        setValue('Tx_ArsaBirimBedel', '0,00');
         return;
       }
       setValue(
@@ -1789,13 +1795,13 @@ img {
     if (!isEmpty(value('Tx_IrtHakMik')) && !isEmpty(value('Tx_DDO'))) {
       setValue('Tx_IrtHakDeg', formatTR(((num('Tx_TasBirDeg') * num('Tx_DDO')) / 100) * num('Tx_IrtHakMik')));
     } else {
-      setValue('Tx_IrtHakDeg', '0');
+      setValue('Tx_IrtHakDeg', '0,00');
     }
 
     if (!isEmpty(value('Tx_MulHakMik'))) {
       setValue('Tx_MulHakDeg', formatTR(num('Tx_TasBirDeg') * num('Tx_MulHakMik')));
     } else {
-      setValue('Tx_MulHakDeg', '0');
+      setValue('Tx_MulHakDeg', '0,00');
     }
 
     setValue('Tx_ToplamDeger', formatTR(num('Tx_IrtHakDeg') + num('Tx_MulHakDeg')));
@@ -1816,7 +1822,7 @@ img {
       if (insAlan !== 0) {
         setValue('Tx_Burutm2Gelir', formatTR(num('Tx_TersineToplamGelir') / insAlan));
       } else {
-        setValue('Tx_Burutm2Gelir', '0');
+        setValue('Tx_Burutm2Gelir', '0,00');
       }
       calcBurutSonuc();
     } else {
@@ -1909,13 +1915,20 @@ img {
 
     FIELD_IDS.forEach(function (id) {
       if (data && typeof data[id] === 'string' && data[id] !== '') {
-        setValue(id, data[id]);
+        var numVal = toNumber(data[id]);
+        if (!isNaN(numVal) && numVal !== 0) {
+          setValue(id, formatTR(numVal));
+        } else if (numVal === 0 && data[id].replace(/[\s.,]/g, '') !== '') {
+          setValue(id, '0,00');
+        } else {
+          setValue(id, data[id]);
+        }
       }
     });
 
-    // Müteahhit Kar Oranı default 20 olmalı
+    // Müteahhit Kar Oranı default 20,00 olmalı
     if (isEmpty(value('Tx_KarOran'))) {
-      setValue('Tx_KarOran', '20');
+      setValue('Tx_KarOran', '20,00');
     }
 
     // Birim Fiyat dropdown senkronizasyonu
@@ -1952,16 +1965,20 @@ img {
     });
 
     el.addEventListener('blur', function () {
-      // Alandan çıkınca formatı tamamla (örn. sonda tek başına virgül kaldıysa)
+      // Alandan çıkınca formatTR ile 2 basamaklı (,00) standardına dönüştür
       if (el.value) {
-        var clean = el.value.replace(/,$/, '');
-        if (clean !== el.value) {
-          el.value = clean;
-          if (handlers[id]) {
-            handlers[id]();
-          }
-          saveState();
+        var n = toNumber(el.value);
+        if (!isNaN(n) && n !== 0) {
+          el.value = formatTR(n);
+        } else if (n === 0 && el.value.replace(/[\s.,]/g, '') !== '') {
+          el.value = '0,00';
+        } else {
+          el.value = '';
         }
+        if (handlers[id]) {
+          handlers[id]();
+        }
+        saveState();
       }
     });
   });
@@ -2372,7 +2389,7 @@ img {
       CLEAR_IDS.forEach(function (id) {
         setValue(id, '');
       });
-      setValue('Tx_KarOran', '20');
+      setValue('Tx_KarOran', '20,00');
       var selB = document.getElementById('Sel_BirimFiyat');
       if (selB) selB.value = '';
       triggerAllCalcs();

@@ -1,6 +1,6 @@
 # değeR - Tersine Değer Hesaplama ve 2026 Birim Maliyet Rehberi
 
-TEDAŞ ve gayrimenkul değerleme süreçleri için geliştirilmiş, çevrimdışı (offline) çalışabilen modern web uygulaması.
+Gayrimenkul değerleme süreçleri için geliştirilmiş, çevrimdışı (offline) çalışabilen modern web uygulaması.
 
 🌐 **Canlı Uygulama:** [https://bozkurtra.github.io/deger/](https://bozkurtra.github.io/deger/)
 

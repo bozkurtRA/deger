@@ -952,6 +952,15 @@ img {
   transform: scale(0.94);
 }
 
+.tabbar-tabs {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+}
+
 /* ---------- Fallbacks and preferences ---------- */
 
 .noscript {
@@ -1312,9 +1321,22 @@ img {
   transform: translateX(-50%) translateY(0);
 }
 
+.toast-msg.is-error {
+  background: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.toast-msg svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
 /* ---------- Gömülü SVG İkonlar & Mobil Düzen Yardımcıları ---------- */
 .app-topbar,
 .sidebar-brand,
+.sidebar-transfer,
 .calc-card-header,
 .clear-btn-text {
   display: none;
@@ -1936,6 +1958,7 @@ img {
     width: 100%;
     height: 100%;
     min-height: 0;
+    overflow-y: auto;
     padding: 18px 12px 16px;
     border-top: 0;
     border-right: 1px solid #e2e8f0;
@@ -1951,7 +1974,138 @@ img {
     font-size: 10.5px;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: #94a3b8;
+    color: #64748b;
+  }
+
+  .tabbar-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .sidebar-transfer {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    flex: 0 0 auto;
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .sidebar-transfer-title {
+    padding: 0 12px 2px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #64748b;
+  }
+
+  .sidebar-transfer-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid #7f8ea3;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+  }
+
+  .sidebar-transfer-btn:hover {
+    background: #f8fafc;
+    border-color: #475569;
+    color: #0f172a;
+  }
+
+  .sidebar-transfer-btn:active {
+    background: #f1f5f9;
+  }
+
+  .sidebar-transfer-btn:focus-visible {
+    outline: 2px solid #0b57d0;
+    outline-offset: 2px;
+  }
+
+  .sidebar-transfer-btn svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    color: #475569;
+    pointer-events: none;
+  }
+
+  .sidebar-transfer-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 2px;
+    padding: 9px 8px 9px 10px;
+    border-radius: 10px;
+    background: #fef2f2;
+    border: 1px solid #dc2626;
+    color: #991b1b;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .sidebar-transfer-alert[hidden] {
+    display: none;
+  }
+
+  .sidebar-transfer-alert-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    margin-top: 1px;
+    color: #dc2626;
+    pointer-events: none;
+  }
+
+  .sidebar-transfer-alert-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  .sidebar-transfer-alert-close {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    margin: -3px -2px 0 0;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #991b1b;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar-transfer-alert-close:hover {
+    background: rgba(220, 38, 38, 0.12);
+  }
+
+  .sidebar-transfer-alert-close:focus-visible {
+    outline: 2px solid #991b1b;
+    outline-offset: 1px;
   }
 
   .tabbar::after {
@@ -2678,30 +2832,61 @@ img {
       </section>
     </main>
 
-    <nav class="tabbar" aria-label="Ana gezinme" role="tablist">
-      <button class="tab is-active" id="tab-hesaplama" type="button" role="tab" aria-selected="true" aria-controls="screen-hesaplama" data-target="hesaplama">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 3.2L3.5 10.4a.8.8 0 0 0-.3.6V20a1 1 0 0 0 1 1h5.3a.5.5 0 0 0 .5-.5V15h4v5.5a.5.5 0 0 0 .5.5H19.8a1 1 0 0 0 1-1v-9a.8.8 0 0 0-.3-.6L12 3.2z"/>
-        </svg>
-        <span class="tab-label">değeR</span>
-      </button>
-      <button class="tab" id="tab-maliyet" type="button" role="tab" aria-selected="false" aria-controls="screen-maliyet" tabindex="-1" data-target="maliyet">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 21h18"/>
-          <path d="M5 21V7l8-4v18"/>
-          <path d="M19 21V11l-6-4"/>
-          <path d="M9 9h1"/>
-          <path d="M9 13h1"/>
-          <path d="M9 17h1"/>
-        </svg>
-        <span class="tab-label">Birim Maliyet</span>
-      </button>
-      <button class="tab" id="tab-hakkinda" type="button" role="tab" aria-selected="false" aria-controls="screen-hakkinda" tabindex="-1" data-target="hakkinda">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" aria-hidden="true">
-          <path d="M4.5 4h15A2.5 2.5 0 0 1 22 6.5v10a2.5 2.5 0 0 1-2.5 2.5H9.2L4.5 22.5V19A2.5 2.5 0 0 1 2 16.5v-10A2.5 2.5 0 0 1 4.5 4zM11 8v2h2V8h-2zm0 4v5h2v-5h-2z"/>
-        </svg>
-        <span class="tab-label">Hakkında</span>
-      </button>
+    <nav class="tabbar" aria-label="Ana gezinme">
+      <div class="tabbar-tabs" role="tablist" aria-label="Modüller">
+        <button class="tab is-active" id="tab-hesaplama" type="button" role="tab" aria-selected="true" aria-controls="screen-hesaplama" data-target="hesaplama">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 3.2L3.5 10.4a.8.8 0 0 0-.3.6V20a1 1 0 0 0 1 1h5.3a.5.5 0 0 0 .5-.5V15h4v5.5a.5.5 0 0 0 .5.5H19.8a1 1 0 0 0 1-1v-9a.8.8 0 0 0-.3-.6L12 3.2z"/>
+          </svg>
+          <span class="tab-label">değeR</span>
+        </button>
+        <button class="tab" id="tab-maliyet" type="button" role="tab" aria-selected="false" aria-controls="screen-maliyet" tabindex="-1" data-target="maliyet">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 21h18"/>
+            <path d="M5 21V7l8-4v18"/>
+            <path d="M19 21V11l-6-4"/>
+            <path d="M9 9h1"/>
+            <path d="M9 13h1"/>
+            <path d="M9 17h1"/>
+          </svg>
+          <span class="tab-label">Birim Maliyet</span>
+        </button>
+        <button class="tab" id="tab-hakkinda" type="button" role="tab" aria-selected="false" aria-controls="screen-hakkinda" tabindex="-1" data-target="hakkinda">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" aria-hidden="true">
+            <path d="M4.5 4h15A2.5 2.5 0 0 1 22 6.5v10a2.5 2.5 0 0 1-2.5 2.5H9.2L4.5 22.5V19A2.5 2.5 0 0 1 2 16.5v-10A2.5 2.5 0 0 1 4.5 4zM11 8v2h2V8h-2zm0 4v5h2v-5h-2z"/>
+          </svg>
+          <span class="tab-label">Hakkında</span>
+        </button>
+      </div>
+      <div class="sidebar-transfer" role="group" aria-labelledby="SidebarTransferLabel">
+        <div class="sidebar-transfer-title" id="SidebarTransferLabel">VERİ AKTARIMI</div>
+        <button class="sidebar-transfer-btn" id="BtnExportData" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Dışarı Aktar</span>
+        </button>
+        <button class="sidebar-transfer-btn" id="BtnImportData" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <span>İçeri Aktar</span>
+        </button>
+        <input id="InputImportFile" type="file" accept=".txt,text/plain" aria-label="İçe aktarılacak .txt veri dosyası" hidden>
+        <div class="sidebar-transfer-alert" id="TransferAlert" role="alert" hidden>
+          <svg class="sidebar-transfer-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span class="sidebar-transfer-alert-text" id="TransferAlertText"></span>
+          <button type="button" class="sidebar-transfer-alert-close" id="BtnCloseTransferAlert" aria-label="Uyarıyı kapat">&times;</button>
+        </div>
+      </div>
     </nav>
   </div>
 
@@ -3587,6 +3772,8 @@ img {
   /* Toast Bildirim Fonksiyonu */
   var toastTimer = null;
   function showToast(text) {
+    var errToast = document.getElementById('ErrorToastMsg');
+    if (errToast) errToast.classList.remove('is-visible');
     var toast = document.getElementById('ToastMsg');
     if (!toast) return;
     toast.textContent = text;
@@ -4290,11 +4477,330 @@ img {
     });
   }
 
+  /* ---------- PC Sol Panel: Veri Dışarı Aktar / İçeri Aktar (.txt) ---------- */
+  var DATA_FILE_MARKER = 'DEGER_VERI_V1';
+  var DATA_FILE_FORMAT = 'deger-data-v1';
+  var DATA_FILE_VERSION = 1;
+  var DATA_MAX_BYTES = 512 * 1024;
+  var errorToastTimer = null;
+
+  var btnExportData = document.getElementById('BtnExportData');
+  var btnImportData = document.getElementById('BtnImportData');
+  var inputImportFile = document.getElementById('InputImportFile');
+  var transferAlertEl = document.getElementById('TransferAlert');
+  var transferAlertTextEl = document.getElementById('TransferAlertText');
+  var btnCloseTransferAlert = document.getElementById('BtnCloseTransferAlert');
+
+  function hideTransferWarning() {
+    if (transferAlertEl) {
+      transferAlertEl.hidden = true;
+    }
+    if (transferAlertTextEl) {
+      transferAlertTextEl.textContent = '';
+    }
+    var errToast = document.getElementById('ErrorToastMsg');
+    if (errToast) {
+      errToast.classList.remove('is-visible');
+    }
+    if (errorToastTimer) {
+      clearTimeout(errorToastTimer);
+      errorToastTimer = null;
+    }
+  }
+
+  function showTransferWarning(message) {
+    var msg = message || 'Hatalı veya uyumsuz dosya. Mevcut verileriniz korundu.';
+    var okToast = document.getElementById('ToastMsg');
+    if (okToast) {
+      okToast.classList.remove('is-visible');
+    }
+    if (toastTimer) {
+      clearTimeout(toastTimer);
+      toastTimer = null;
+    }
+    if (transferAlertTextEl && transferAlertEl) {
+      transferAlertTextEl.textContent = msg;
+      transferAlertEl.hidden = false;
+    }
+    var errToast = document.getElementById('ErrorToastMsg');
+    var errToastText = document.getElementById('ErrorToastText');
+    if (errToast && errToastText) {
+      errToastText.textContent = msg;
+      errToast.classList.add('is-visible');
+      if (errorToastTimer) clearTimeout(errorToastTimer);
+      errorToastTimer = setTimeout(function () {
+        errToast.classList.remove('is-visible');
+      }, 4200);
+    }
+  }
+
+  if (btnCloseTransferAlert) {
+    btnCloseTransferAlert.addEventListener('click', hideTransferWarning);
+  }
+
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  function buildExportTxtContent() {
+    var now = new Date();
+    var localDate =
+      now.getFullYear() + '-' + pad2(now.getMonth() + 1) + '-' + pad2(now.getDate()) +
+      ' ' + pad2(now.getHours()) + ':' + pad2(now.getMinutes()) + ':' + pad2(now.getSeconds());
+    var snapshot = {};
+    FIELD_IDS.forEach(function (id) {
+      snapshot[id] = value(id);
+    });
+    var payload = {
+      app: 'degeR',
+      format: DATA_FILE_FORMAT,
+      version: DATA_FILE_VERSION,
+      storageKey: STORAGE_KEY,
+      exportedAt: now.toISOString(),
+      fields: snapshot
+    };
+    return [
+      '# değeR — Veri Dışa Aktarım Dosyası',
+      '# Oluşturulma Tarihi: ' + localDate,
+      '# Not: Bu dosyayı uygulamada "İçeri Aktar" seçeneği ile geri yükleyebilirsiniz.',
+      DATA_FILE_MARKER,
+      JSON.stringify(payload, null, 2)
+    ].join('\r\n');
+  }
+
+  function exportDataToTxt() {
+    hideTransferWarning();
+    try {
+      var content = buildExportTxtContent();
+      var now = new Date();
+      var filename =
+        'deger-veriler-' +
+        now.getFullYear() + '-' + pad2(now.getMonth() + 1) + '-' + pad2(now.getDate()) +
+        '_' + pad2(now.getHours()) + '-' + pad2(now.getMinutes()) + '.txt';
+      var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(function () {
+        URL.revokeObjectURL(url);
+      }, 1000);
+      showToast('Veriler .txt dosyası olarak indirildi');
+    } catch (err) {
+      showTransferWarning('Veriler dışa aktarılamadı. Tarayıcı indirmeyi desteklemiyor olabilir.');
+    }
+  }
+
+  function isValidFieldNumberString(raw) {
+    if (typeof raw !== 'string') return false;
+    var trimmed = raw.trim();
+    if (trimmed === '') return true;
+    if (trimmed.length > 32) return false;
+    if (!/^-?(?:\d{1,3}(?:\.\d{3})*|\d+)(?:,\d{1,6})?$/.test(trimmed)) return false;
+    var normalized = trimmed.replace(/\./g, '').replace(/,/g, '.');
+    var parsed = Number(normalized);
+    return typeof parsed === 'number' && !isNaN(parsed) && isFinite(parsed);
+  }
+
+  function validateImportContent(rawText) {
+    if (typeof rawText !== 'string') {
+      return { ok: false, error: 'Dosya metin formatında okunamadı. Mevcut verileriniz korundu.' };
+    }
+    var cleaned = rawText.replace(/^\uFEFF/, '');
+    if (!cleaned.trim()) {
+      return { ok: false, error: 'Seçilen dosya boş. Mevcut verileriniz korundu.' };
+    }
+
+    var lines = cleaned.split(/\r?\n/);
+    var markerIndex = -1;
+    for (var i = 0; i < lines.length; i += 1) {
+      var line = lines[i].trim();
+      if (line === '' || line.charAt(0) === '#') continue;
+      if (line === DATA_FILE_MARKER) {
+        markerIndex = i;
+      }
+      break;
+    }
+
+    if (markerIndex === -1) {
+      return { ok: false, error: 'Uyumsuz dosya formatı: Geçerli değeR veri başlığı bulunamadı. Mevcut verileriniz korundu.' };
+    }
+
+    var jsonPart = lines.slice(markerIndex + 1).join('\n').trim();
+    if (!jsonPart) {
+      return { ok: false, error: 'Dosya içeriği eksik veya bozuk. Mevcut verileriniz korundu.' };
+    }
+
+    var payload;
+    try {
+      payload = JSON.parse(jsonPart);
+    } catch (err) {
+      return { ok: false, error: 'Dosya içeriği bozuk (JSON biçimi hatalı). Mevcut verileriniz korundu.' };
+    }
+
+    if (
+      !payload ||
+      typeof payload !== 'object' ||
+      Array.isArray(payload) ||
+      payload.app !== 'degeR' ||
+      payload.format !== DATA_FILE_FORMAT ||
+      payload.version !== DATA_FILE_VERSION ||
+      payload.storageKey !== STORAGE_KEY ||
+      !payload.fields ||
+      typeof payload.fields !== 'object' ||
+      Array.isArray(payload.fields)
+    ) {
+      return { ok: false, error: 'Uyumsuz veri yapısı: Bu dosya değeR uygulamasına ait değil. Mevcut verileriniz korundu.' };
+    }
+
+    var payloadKeys = Object.keys(payload.fields);
+    if (payloadKeys.length !== FIELD_IDS.length) {
+      return { ok: false, error: 'Eksik veya fazla veri alanı tespit edildi. Mevcut verileriniz korundu.' };
+    }
+
+    for (var j = 0; j < payloadKeys.length; j += 1) {
+      if (FIELD_IDS.indexOf(payloadKeys[j]) === -1) {
+        return { ok: false, error: 'Tanımsız veri alanı tespit edildi. Mevcut verileriniz korundu.' };
+      }
+    }
+
+    var validatedFields = {};
+    for (var k = 0; k < FIELD_IDS.length; k += 1) {
+      var id = FIELD_IDS[k];
+      if (!Object.prototype.hasOwnProperty.call(payload.fields, id)) {
+        return { ok: false, error: 'Dosyadaki zorunlu alanlardan biri eksik (' + id + '). Mevcut verileriniz korundu.' };
+      }
+      var val = payload.fields[id];
+      if (!isValidFieldNumberString(val)) {
+        return { ok: false, error: 'Dosyada geçersiz sayısal değer bulundu (' + id + '). Mevcut verileriniz korundu.' };
+      }
+      validatedFields[id] = val.trim();
+    }
+
+    return { ok: true, fields: validatedFields };
+  }
+
+  function applyImportedFields(validatedFields) {
+    FIELD_IDS.forEach(function (id) {
+      var rawVal = validatedFields[id];
+      if (rawVal !== '') {
+        var numVal = toNumber(rawVal);
+        if (!isNaN(numVal) && numVal !== 0) {
+          setValue(id, formatTR(numVal));
+        } else if (numVal === 0 && rawVal.replace(/[\s.,-]/g, '') !== '') {
+          setValue(id, '0,00');
+        } else {
+          setValue(id, '');
+        }
+      } else {
+        setValue(id, '');
+      }
+    });
+
+    if (isEmpty(value('Tx_KarOran'))) {
+      setValue('Tx_KarOran', '20,00');
+    }
+
+    var currentBirimFiyat = num('Tx_BirimFiyat');
+    var selB = document.getElementById('Sel_BirimFiyat');
+    if (selB) {
+      selB.value = '';
+      if (currentBirimFiyat > 0) {
+        selB.value = String(currentBirimFiyat);
+        if (selB.selectedIndex === -1) {
+          selB.value = '';
+        }
+      }
+    }
+
+    triggerAllCalcs();
+    saveState();
+  }
+
+  function importDataFromFile(file) {
+    if (!file) return;
+
+    var fileName = String(file.name || '');
+    if (!/\.txt$/i.test(fileName)) {
+      showTransferWarning('Geçersiz dosya uzantısı. Yalnızca .txt uzantılı değeR veri dosyası yüklenebilir.');
+      return;
+    }
+
+    if (file.type && !/^text\/plain(?:\s*;|$)/i.test(file.type)) {
+      showTransferWarning('Geçersiz dosya türü. Lütfen düz metin (.txt) dosyası seçin.');
+      return;
+    }
+
+    if (typeof file.size === 'number') {
+      if (file.size <= 0) {
+        showTransferWarning('Seçilen .txt dosyası boş. Mevcut verileriniz korundu.');
+        return;
+      }
+      if (file.size > DATA_MAX_BYTES) {
+        showTransferWarning('Seçilen dosya boyutu sınırın üzerinde. Mevcut verileriniz korundu.');
+        return;
+      }
+    }
+
+    var reader = new FileReader();
+    reader.onload = function () {
+      var result = validateImportContent(reader.result);
+      if (!result.ok) {
+        showTransferWarning(result.error);
+        return;
+      }
+      hideTransferWarning();
+      applyImportedFields(result.fields);
+      activateTab('hesaplama');
+      try {
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', '#hesaplama');
+        }
+      } catch (err) {}
+      showToast('Veriler dosyadan başarıyla içe aktarıldı');
+    };
+    reader.onerror = function () {
+      showTransferWarning('Dosya okunurken bir hata oluştu. Mevcut verileriniz korundu.');
+    };
+    reader.readAsText(file, 'UTF-8');
+  }
+
+  if (btnExportData) {
+    btnExportData.addEventListener('click', exportDataToTxt);
+  }
+
+  if (btnImportData && inputImportFile) {
+    btnImportData.addEventListener('click', function () {
+      inputImportFile.value = '';
+      inputImportFile.click();
+    });
+
+    inputImportFile.addEventListener('change', function () {
+      var file = inputImportFile.files && inputImportFile.files[0];
+      inputImportFile.value = '';
+      if (file) {
+        importDataFromFile(file);
+      }
+    });
+  }
+
   restoreState();
   renderMaliyetList('', 'ALL');
   activateTab(tabFromHash());
 })();
 </script>
 <div id="ToastMsg" class="toast-msg" role="status" aria-live="polite"></div>
+<div id="ErrorToastMsg" class="toast-msg is-error" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+    <line x1="12" y1="9" x2="12" y2="13"/>
+    <line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
+  <span id="ErrorToastText"></span>
+</div>
 </body>
 </html>

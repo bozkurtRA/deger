@@ -2,6 +2,8 @@
 
 TEDAŞ ve gayrimenkul değerleme süreçleri için geliştirilmiş, çevrimdışı (offline) çalışabilen modern web uygulaması.
 
+🌐 **Canlı Uygulama:** [https://bozkurtra.github.io/deger/](https://bozkurtra.github.io/deger/)
+
 ## 🚀 Özellikler
 - **Tersine Değer Hesaplama:** Arsa birim bedeli, toplam inşaat maliyeti, müteahhit kâr payı, brüt m² geliri ve irtifak/mülkiyet hakkı hesaplamaları.
 - **2026 Yapı Yaklaşık Birim Maliyetleri Rehberi:** 03 Şubat 2026 tarihli ve 33157 sayılı Resmî Gazete'de yayımlanan Çevre, Şehircilik ve İklim Değişikliği Bakanlığı tebliği verileri (I-A'dan V-E'ye tüm sınıflar).

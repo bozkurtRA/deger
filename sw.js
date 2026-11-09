@@ -1,14 +1,8 @@
-/* değeR PWA Service Worker v3.2 */
-const CACHE_NAME = 'deger-pwa-v3.2';
+/* değeR PWA Service Worker v3.3 */
+const CACHE_NAME = 'deger-pwa-v3.3';
 const PRECACHE_ASSETS = [
   './',
-  './index.html',
-  './manifest.webmanifest',
-  './manifest.json',
-  './icon-192.png',
-  './icon-512.png',
-  './icon-maskable-512.png',
-  './apple-touch-icon.png'
+  './index.html'
 ];
 
 self.addEventListener('install', (event) => {

@@ -1342,6 +1342,11 @@ img {
   display: none;
 }
 
+.tab-pc-only,
+.screen-pc-only {
+  display: none !important;
+}
+
 .calc-card,
 .calc-grid,
 .calc-card-reverse-head,
@@ -2355,6 +2360,588 @@ img {
   .toast-msg.is-visible {
     transform: translateY(0);
   }
+
+  /* Masaüstü (PC) Yalnızca Tersine Değer Hesaplama Sekmesi */
+  .tab-pc-only {
+    display: flex !important;
+  }
+
+  .tab.tab-pc-only {
+    height: auto;
+    min-height: 44px;
+    padding: 8px 12px;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .tab.tab-pc-only .tab-label {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .screen-pc-only:not([hidden]) {
+    display: block !important;
+  }
+
+  .screen-pc-only[hidden] {
+    display: none !important;
+  }
+
+  .tersine-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .tersine-link-btn,
+  .tersine-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+  }
+
+  .tersine-link-btn {
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #0b57d0;
+    flex-shrink: 0;
+  }
+
+  .tersine-link-btn:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+  }
+
+  .tersine-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .tersine-btn--konut {
+    border: 1px solid #bfdbfe;
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  .tersine-btn--konut:hover {
+    background: #dbeafe;
+    border-color: #93c5fd;
+  }
+
+  .tersine-btn--ticari {
+    border: 1px solid #fde68a;
+    background: #fffbeb;
+    color: #b45309;
+  }
+
+  .tersine-btn--ticari:hover {
+    background: #fef3c7;
+    border-color: #fcd34d;
+  }
+
+  .tersine-btn--ghost {
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #475569;
+  }
+
+  .tersine-btn--ghost:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    color: #0f172a;
+  }
+
+  .tersine-link-btn:focus-visible,
+  .tersine-btn:focus-visible,
+  .tersine-row-del:focus-visible {
+    outline: 2px solid #0b57d0;
+    outline-offset: 2px;
+  }
+
+  .tersine-source-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 14px;
+  }
+
+  .tersine-source-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    min-width: 0;
+  }
+
+  .tersine-source-item--accent {
+    background: #f0f9ff;
+    border-color: #bae6fd;
+  }
+
+  .tersine-source-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+    line-height: 1.25;
+  }
+
+  .tersine-source-val {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tersine-source-note {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.25;
+  }
+
+  .tersine-area-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    background: #fef2f2;
+    border: 1px solid #dc2626;
+    color: #991b1b;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  .tersine-area-alert svg,
+  .tersine-area-notice svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .tersine-area-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: #fffbeb;
+    border: 1px solid #f59e0b;
+    color: #92400e;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  .tersine-meter-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+  }
+
+  .tersine-meter-box.is-over {
+    background: #fff5f5;
+    border-color: rgba(208, 2, 27, 0.35);
+  }
+
+  .tersine-meter-stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 18px;
+    font-size: 12px;
+    color: #475569;
+  }
+
+  .tersine-meter-stat strong {
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tersine-meter-sub {
+    margin-left: 6px;
+    color: #64748b;
+    font-size: 11.5px;
+  }
+
+  .tersine-meter-box.is-over .tersine-meter-stat--ortak strong,
+  .tersine-meter-box.is-over .tersine-meter-stat--bagimsiz strong {
+    color: var(--red);
+  }
+
+  .tersine-progress-track {
+    display: flex;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+  }
+
+  .tersine-progress-seg {
+    height: 100%;
+    width: 0%;
+    transition: width 160ms ease;
+  }
+
+  .tersine-progress-seg--konut {
+    background: #2563eb;
+  }
+
+  .tersine-progress-seg--ticari {
+    background: #d97706;
+  }
+
+  .tersine-meter-box.is-over .tersine-progress-seg--konut,
+  .tersine-meter-box.is-over .tersine-progress-seg--ticari {
+    background: var(--red);
+  }
+
+  .tersine-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .tersine-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    min-width: 660px;
+  }
+
+  .tersine-table thead th {
+    padding: 9px 6px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1.3;
+    white-space: normal;
+  }
+
+  .tersine-th-unit {
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #64748b;
+  }
+
+  .tersine-table thead th.is-num {
+    text-align: right;
+  }
+
+  .tersine-table thead th.is-center {
+    text-align: center;
+  }
+
+  .tersine-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 120ms ease;
+  }
+
+  .tersine-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .tersine-table tbody tr:hover {
+    background: #f8fafc;
+  }
+
+  .tersine-table td {
+    padding: 7px 6px;
+    vertical-align: middle;
+  }
+
+  .tersine-row-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tersine-select {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 0 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .tersine-row--konut .tersine-select {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+  }
+
+  .tersine-row--ticari .tersine-select {
+    background-color: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+  }
+
+  .tersine-select:focus {
+    border-color: rgba(208, 2, 27, 0.55);
+    box-shadow: 0 0 0 3px rgba(208, 2, 27, 0.14);
+  }
+
+  .tersine-input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 34px;
+    padding: 0 9px;
+    border: 1px solid #d8dee6;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0f172a;
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    outline: none;
+    transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  }
+
+  .tersine-input:focus {
+    border-color: rgba(208, 2, 27, 0.55);
+    box-shadow: 0 0 0 3px rgba(208, 2, 27, 0.14);
+  }
+
+  .tersine-input[readonly] {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    color: #1e293b;
+    font-weight: 600;
+    cursor: default;
+  }
+
+  .tersine-input[readonly]:focus {
+    border-color: #cbd5e1;
+    box-shadow: none;
+  }
+
+  .tersine-row-del {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+  }
+
+  .tersine-row-del:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: var(--red);
+  }
+
+  .tersine-row-del svg {
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+  }
+
+  .tersine-empty {
+    padding: 20px 16px;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .tersine-note {
+    margin: 0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border-left: 3px solid #94a3b8;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: #475569;
+  }
+
+  .tersine-summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .tersine-sum-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 13px 15px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    min-width: 0;
+  }
+
+  .tersine-sum-card--konut {
+    background: #f8fbff;
+    border-color: #dbeafe;
+    border-top: 3px solid #2563eb;
+  }
+
+  .tersine-sum-card--ticari {
+    background: #fffdf5;
+    border-color: #fef3c7;
+    border-top: 3px solid #d97706;
+  }
+
+  .tersine-sum-card--total {
+    background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
+    border-color: rgba(208, 2, 27, 0.24);
+    border-top: 3px solid var(--red);
+  }
+
+  .tersine-sum-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .tersine-sum-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .tersine-sum-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .tersine-sum-metrics {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  .tersine-sum-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+    color: #475569;
+  }
+
+  .tersine-sum-row strong {
+    font-size: 13px;
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .tersine-sum-row--over strong {
+    color: var(--red);
+  }
+
+  .tersine-sum-highlight {
+    margin-top: 2px;
+    padding-top: 8px;
+    border-top: 1px dashed #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .tersine-sum-highlight-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+  }
+
+  .tersine-sum-card--total .tersine-sum-highlight-label {
+    color: var(--red);
+  }
+
+  .tersine-sum-highlight-val {
+    font-size: 16.5px;
+    font-weight: 800;
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+    word-break: break-word;
+  }
+
+  .tersine-sum-card--total .tersine-sum-highlight-val {
+    color: var(--red);
+    font-size: 18px;
+  }
+
+  .tersine-reverse-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 18px;
+    margin-top: 2px;
+  }
+
+  .tersine-reverse-grid .field > .field-input {
+    height: 36px;
+    font-size: 14.5px;
+  }
+
+  .tersine-reverse-banner {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -2830,6 +3417,255 @@ img {
           </div>
         </div>
       </section>
+
+      <section class="screen screen-pc-only" id="screen-tersine" data-screen="tersine" role="tabpanel" aria-labelledby="tab-tersine" hidden>
+        <div class="page page-tersine">
+          <div class="tersine-workspace">
+            <div class="calc-card">
+              <div class="calc-card-header">
+                <span class="calc-card-badge" aria-hidden="true">1</span>
+                <div class="calc-card-titles">
+                  <h2 class="calc-card-title">Kaynak Proje Verileri (değeR Sekmesi Bağlantısı)</h2>
+                  <p class="calc-card-subtitle">Taşınmaz ve maliyet verileri değeR sekmesinden otomatik alınır; değiştiğinde bu ekran anında güncellenir</p>
+                </div>
+                <button type="button" class="tersine-link-btn" id="BtnTersineGoDeger">değeR Sekmesinde Düzenle &raquo;</button>
+              </div>
+              <div class="tersine-source-grid">
+                <div class="tersine-source-item tersine-source-item--accent">
+                  <span class="tersine-source-label">Toplam İnşaat Alanı (Ortak Alanlar Dahil)</span>
+                  <span class="tersine-source-val" id="TdSrc_ToplamInsaatAlan">—</span>
+                  <span class="tersine-source-note" id="TdSrc_InsaatNote">Bağımsız bölüm dağılımı üst sınırı</span>
+                </div>
+                <div class="tersine-source-item">
+                  <span class="tersine-source-label">Parsel Yüzölçümü</span>
+                  <span class="tersine-source-val" id="TdSrc_Alan">—</span>
+                  <span class="tersine-source-note">değeR &bull; Yüz Ölçüm [ m² ]</span>
+                </div>
+                <div class="tersine-source-item">
+                  <span class="tersine-source-label">İnşaat m² Birim Fiyatı</span>
+                  <span class="tersine-source-val" id="TdSrc_BirimFiyat">—</span>
+                  <span class="tersine-source-note">değeR &bull; Yapı birim maliyeti</span>
+                </div>
+                <div class="tersine-source-item">
+                  <span class="tersine-source-label">Toplam İnşaat Maliyeti</span>
+                  <span class="tersine-source-val" id="TdSrc_ToplamMaliyet">—</span>
+                  <span class="tersine-source-note">Ortak alanlar dahil toplam maliyet</span>
+                </div>
+                <div class="tersine-source-item">
+                  <span class="tersine-source-label">Müteahhit Kâr Oranı</span>
+                  <span class="tersine-source-val" id="TdSrc_KarOran">—</span>
+                  <span class="tersine-source-note">değeR &bull; Müteahhit kâr yüzdesi</span>
+                </div>
+                <div class="tersine-source-item">
+                  <span class="tersine-source-label">Hesaplanan Emsal Alanı (KAKS)</span>
+                  <span class="tersine-source-val" id="TdSrc_HesapInsaat">—</span>
+                  <span class="tersine-source-note">Bilgi amaçlı emsal inşaat alanı</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="calc-card">
+              <div class="calc-card-header">
+                <span class="calc-card-badge" aria-hidden="true">2</span>
+                <div class="calc-card-titles">
+                  <h2 class="calc-card-title">Konut ve Ticari Bağımsız Bölüm Dağılımı</h2>
+                  <p class="calc-card-subtitle">İstenildiği kadar konut veya ticari satır ekleyin; toplam alan ve satış geliri anında hesaplanır</p>
+                </div>
+                <div class="tersine-header-actions">
+                  <button type="button" class="tersine-btn tersine-btn--konut" id="BtnTersineAddKonut">+ Konut Ekle</button>
+                  <button type="button" class="tersine-btn tersine-btn--ticari" id="BtnTersineAddTicari">+ Ticari Ekle</button>
+                  <button type="button" class="tersine-btn tersine-btn--ghost" id="BtnTersineClear" title="Dağılım satırlarını sıfırla">Temizle</button>
+                </div>
+              </div>
+
+              <div class="tersine-area-alert" id="TdAreaAlert" role="alert" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                <div>
+                  <strong>Toplam İnşaat Alanı Aşımı Uyarısı:</strong>
+                  <span id="TdAreaAlertText"></span>
+                </div>
+              </div>
+
+              <div class="tersine-area-notice" id="TdAreaNotice" role="status" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <div id="TdAreaNoticeText">İnşaat alanı sınır kontrolü için <strong>değeR</strong> sekmesinde Toplam İnşaat Alanı [ m² ] bilgisini girin.</div>
+              </div>
+
+              <div class="tersine-meter-box" id="TdAreaMeter">
+                <div class="tersine-meter-stats">
+                  <div class="tersine-meter-stat tersine-meter-stat--bagimsiz">
+                    Dağıtılan Bağımsız Bölüm: <strong id="TdMeterBagimsiz">0,00 m²</strong>
+                    <span class="tersine-meter-sub" id="TdMeterBreakdown"></span>
+                  </div>
+                  <div class="tersine-meter-stat tersine-meter-stat--ortak">
+                    <span id="TdMeterOrtakLabel">Ortak Alanlar / Kalan Alan (Satış Dışı):</span> <strong id="TdMeterOrtak">—</strong>
+                  </div>
+                  <div class="tersine-meter-stat">
+                    Toplam İnşaat Alanı (Kaynak): <strong id="TdMeterSinir">—</strong>
+                  </div>
+                </div>
+                <div class="tersine-progress-track" aria-hidden="true">
+                  <div class="tersine-progress-seg tersine-progress-seg--konut" id="TdMeterKonutBar"></div>
+                  <div class="tersine-progress-seg tersine-progress-seg--ticari" id="TdMeterTicariBar"></div>
+                </div>
+              </div>
+
+              <div class="tersine-table-wrap">
+                <table class="tersine-table" aria-label="Konut ve ticari bağımsız bölüm dağılımı">
+                  <colgroup>
+                    <col style="width: 4%;">
+                    <col style="width: 14.5%;">
+                    <col style="width: 14%;">
+                    <col style="width: 9.5%;">
+                    <col style="width: 15.5%;">
+                    <col style="width: 17.5%;">
+                    <col style="width: 19.5%;">
+                    <col style="width: 5.5%;">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th class="is-center" scope="col">#</th>
+                      <th scope="col">Kullanım Türü</th>
+                      <th class="is-num" scope="col">Birim Alan <span class="tersine-th-unit">[&nbsp;m²&nbsp;]</span></th>
+                      <th class="is-num" scope="col">Adet</th>
+                      <th class="is-num" scope="col">Toplam Alan <span class="tersine-th-unit">[&nbsp;m²&nbsp;]</span></th>
+                      <th class="is-num" scope="col">Satış Birim Fiyatı <span class="tersine-th-unit">[&nbsp;TL/m²&nbsp;]</span></th>
+                      <th class="is-num" scope="col">Toplam Satış Bedeli <span class="tersine-th-unit">[&nbsp;TL&nbsp;]</span></th>
+                      <th class="is-center" scope="col">Sil</th>
+                    </tr>
+                  </thead>
+                  <tbody id="TersineRowsBody"></tbody>
+                </table>
+                <div class="tersine-empty" id="TersineEmptyState" hidden>
+                  Henüz bağımsız bölüm satırı bulunmuyor. Yukarıdaki <strong>+ Konut Ekle</strong> veya <strong>+ Ticari Ekle</strong> butonlarıyla satır ekleyebilirsiniz.
+                </div>
+              </div>
+
+              <p class="tersine-note">
+                Bağımsız bölüm alanları yalnızca satılabilir konut ve ticari ünitelerin net/brüt dağılımını temsil eder. Ortak alanlar bağımsız bölüm alanlarına ve satış gelirine eklenmez; maliyet hesabında değeR sekmesindeki ortak alanlar dahil <strong>Toplam İnşaat Alanı</strong> esas alınır.
+              </p>
+            </div>
+
+            <div class="calc-card">
+              <div class="calc-card-header">
+                <span class="calc-card-badge" aria-hidden="true">3</span>
+                <div class="calc-card-titles">
+                  <h2 class="calc-card-title">Gelir Özeti &amp; Tersine Değerleme Sonuçları</h2>
+                  <p class="calc-card-subtitle">Konut ve ticari gelir dağılımı, genel toplam satış geliri ve proje verilerine göre arsa değeri analizi</p>
+                </div>
+              </div>
+
+              <div class="tersine-summary-cards">
+                <div class="tersine-sum-card tersine-sum-card--konut">
+                  <div class="tersine-sum-head">
+                    <h3 class="tersine-sum-title">Konut Toplamı</h3>
+                    <span class="tersine-sum-pill" id="TdSum_KonutAdet">0 Adet</span>
+                  </div>
+                  <div class="tersine-sum-metrics">
+                    <div class="tersine-sum-row">
+                      <span>Konut Bağımsız Bölüm Alanı</span>
+                      <strong id="TdSum_KonutAlan">0,00 m²</strong>
+                    </div>
+                    <div class="tersine-sum-row">
+                      <span>Dağıtım / İnşaat Payı</span>
+                      <strong id="TdSum_KonutPay">%0,00</strong>
+                    </div>
+                    <div class="tersine-sum-row">
+                      <span>Ort. Satış Fiyatı</span>
+                      <strong id="TdSum_KonutOrtFiyat">—</strong>
+                    </div>
+                  </div>
+                  <div class="tersine-sum-highlight">
+                    <span class="tersine-sum-highlight-label">Konut Toplam Satış Geliri</span>
+                    <span class="tersine-sum-highlight-val" id="TdSum_KonutGelir">0,00 TL</span>
+                  </div>
+                </div>
+
+                <div class="tersine-sum-card tersine-sum-card--ticari">
+                  <div class="tersine-sum-head">
+                    <h3 class="tersine-sum-title">Ticari Toplamı</h3>
+                    <span class="tersine-sum-pill" id="TdSum_TicariAdet">0 Adet</span>
+                  </div>
+                  <div class="tersine-sum-metrics">
+                    <div class="tersine-sum-row">
+                      <span>Ticari Bağımsız Bölüm Alanı</span>
+                      <strong id="TdSum_TicariAlan">0,00 m²</strong>
+                    </div>
+                    <div class="tersine-sum-row">
+                      <span>Dağıtım / İnşaat Payı</span>
+                      <strong id="TdSum_TicariPay">%0,00</strong>
+                    </div>
+                    <div class="tersine-sum-row">
+                      <span>Ort. Satış Fiyatı</span>
+                      <strong id="TdSum_TicariOrtFiyat">—</strong>
+                    </div>
+                  </div>
+                  <div class="tersine-sum-highlight">
+                    <span class="tersine-sum-highlight-label">Ticari Toplam Satış Geliri</span>
+                    <span class="tersine-sum-highlight-val" id="TdSum_TicariGelir">0,00 TL</span>
+                  </div>
+                </div>
+
+                <div class="tersine-sum-card tersine-sum-card--total">
+                  <div class="tersine-sum-head">
+                    <h3 class="tersine-sum-title">Genel Toplam</h3>
+                    <span class="tersine-sum-pill" id="TdSum_ToplamAdet">0 Adet</span>
+                  </div>
+                  <div class="tersine-sum-metrics">
+                    <div class="tersine-sum-row">
+                      <span>Dağıtılan Bağımsız Bölüm</span>
+                      <strong id="TdSum_BagimsizAlan">0,00 m²</strong>
+                    </div>
+                    <div class="tersine-sum-row" id="TdSum_OrtakRow">
+                      <span id="TdSum_OrtakLabel">Ortak Alanlar / Kalan Alan</span>
+                      <strong id="TdSum_OrtakAlan">—</strong>
+                    </div>
+                  </div>
+                  <div class="tersine-sum-highlight">
+                    <span class="tersine-sum-highlight-label">Genel Toplam Satış Geliri</span>
+                    <span class="tersine-sum-highlight-val" id="TdSum_GenelGelir">0,00 TL</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tersine-reverse-grid">
+                <div class="field">
+                  <label class="field-label label-red" for="TdRes_KarPayi">Müteahhit Kâr Payı [ TL ]</label>
+                  <input class="field-input" id="TdRes_KarPayi" type="text" readonly aria-readonly="true" tabindex="-1">
+                </div>
+                <div class="field">
+                  <label class="field-label label-red" for="TdRes_ArsaToplam">Kalan Toplam Arsa Değeri [ TL ]</label>
+                  <input class="field-input" id="TdRes_ArsaToplam" type="text" readonly aria-readonly="true" tabindex="-1">
+                </div>
+                <div class="field">
+                  <label class="field-label label-red" for="TdRes_BurutGelir">Brüt İnşaat m² Geliri (Ortak Dahil) [ TL/m² ]</label>
+                  <input class="field-input" id="TdRes_BurutGelir" type="text" readonly aria-readonly="true" tabindex="-1">
+                </div>
+                <div class="field">
+                  <label class="field-label label-red" for="TdRes_BagimsizOrt">Bağımsız Bölüm Ort. Fiyat [ TL/m² ]</label>
+                  <input class="field-input" id="TdRes_BagimsizOrt" type="text" readonly aria-readonly="true" tabindex="-1">
+                </div>
+                <div class="field">
+                  <label class="field-label" for="TdRes_HedefFark">değeR Hedef Tersine Gelir Farkı [ TL ]</label>
+                  <input class="field-input" id="TdRes_HedefFark" type="text" readonly aria-readonly="true" tabindex="-1">
+                </div>
+                <div class="field-result-banner tersine-reverse-banner">
+                  <label class="field-label label-red" for="TdRes_ArsaBirim">Dağıtıma Göre Hesaplanan Arsa Birim Bedeli [ TL/m² ]</label>
+                  <input class="field-input result-red" id="TdRes_ArsaBirim" type="text" readonly aria-readonly="true" tabindex="-1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <nav class="tabbar" aria-label="Ana gezinme">
@@ -2839,6 +3675,15 @@ img {
             <path d="M12 3.2L3.5 10.4a.8.8 0 0 0-.3.6V20a1 1 0 0 0 1 1h5.3a.5.5 0 0 0 .5-.5V15h4v5.5a.5.5 0 0 0 .5.5H19.8a1 1 0 0 0 1-1v-9a.8.8 0 0 0-.3-.6L12 3.2z"/>
           </svg>
           <span class="tab-label">değeR</span>
+        </button>
+        <button class="tab tab-pc-only" id="tab-tersine" type="button" role="tab" aria-selected="false" aria-controls="screen-tersine" tabindex="-1" data-target="tersine">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="8 9 4 5 8 1"/>
+            <path d="M4 5h12a4 4 0 0 1 0 8h-3"/>
+            <rect x="3" y="14" width="8" height="7" rx="1.5"/>
+            <rect x="13" y="14" width="8" height="7" rx="1.5"/>
+          </svg>
+          <span class="tab-label">Tersine Değer Hesaplama</span>
         </button>
         <button class="tab" id="tab-maliyet" type="button" role="tab" aria-selected="false" aria-controls="screen-maliyet" tabindex="-1" data-target="maliyet">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2920,6 +3765,7 @@ img {
   'use strict';
 
   var STORAGE_KEY = 'deger.v3.fields';
+  var TERSINE_STORAGE_KEY = 'deger.v3.tersineRows';
 
   var FIELD_IDS = [
     'Tx_Alan',
@@ -3480,6 +4326,88 @@ img {
     el._prevCursor = newPos;
   }
 
+  function formatIntTR(number) {
+    if (number === '' || number === null || number === undefined || isNaN(number)) return '';
+    var n = Math.round(Number(number));
+    if (!isFinite(n)) return '';
+    var isNeg = n < 0;
+    var absStr = String(Math.abs(n));
+    return (isNeg ? '-' : '') + absStr.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  function formatIntLive(el, event) {
+    var raw = el.value;
+    if (!raw) {
+      el._prevVal = '';
+      el._prevCursor = 0;
+      return;
+    }
+
+    var cursorPos = el.selectionStart !== null ? el.selectionStart : raw.length;
+    var inputType = event && event.inputType ? event.inputType : '';
+
+    if (inputType === 'deleteContentBackward' && el._prevVal !== undefined && el._prevCursor !== undefined) {
+      if (el._prevCursor > 0 && el._prevVal.charAt(el._prevCursor - 1) === '.') {
+        var targetDigitPos = el._prevCursor - 2;
+        if (targetDigitPos >= 0) {
+          raw = el._prevVal.substring(0, targetDigitPos) + el._prevVal.substring(el._prevCursor);
+          cursorPos = targetDigitPos;
+        }
+      }
+    }
+
+    var textBefore = raw.substring(0, cursorPos);
+    var digitsBefore = 0;
+    for (var i = 0; i < textBefore.length; i += 1) {
+      var ch = textBefore.charAt(i);
+      if (ch >= '0' && ch <= '9') {
+        digitsBefore += 1;
+      }
+    }
+
+    var digits = raw.replace(/\D/g, '');
+    if (!digits) {
+      el.value = '';
+      el._prevVal = '';
+      el._prevCursor = 0;
+      return;
+    }
+
+    if (digits.length > 1 && digits.charAt(0) === '0') {
+      digits = digits.replace(/^0+/, '') || '0';
+    }
+
+    var formatted = digits.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    el.value = formatted;
+
+    var newPos = 0;
+    var count = 0;
+    for (var k = 0; k < formatted.length; k += 1) {
+      var fc = formatted.charAt(k);
+      if (fc >= '0' && fc <= '9') {
+        count += 1;
+      }
+      if (count <= digitsBefore) {
+        newPos = k + 1;
+      }
+    }
+
+    try {
+      el.setSelectionRange(newPos, newPos);
+    } catch (err) {}
+
+    el._prevVal = formatted;
+    el._prevCursor = newPos;
+  }
+
+  function isDesktopViewport() {
+    if (typeof window === 'undefined') return false;
+    if (typeof window.matchMedia === 'function') {
+      return window.matchMedia('(min-width: 1024px)').matches;
+    }
+    return window.innerWidth >= 1024;
+  }
+
   function allFilled(ids) {
     for (var i = 0; i < ids.length; i += 1) {
       if (isEmpty(value(ids[i]))) {
@@ -3642,6 +4570,9 @@ img {
     calcTasinmaz();
     calcTersine();
     calcBurutSonuc();
+    if (typeof updateTersineCalculations === 'function') {
+      updateTersineCalculations();
+    }
   }
 
   function saveState() {
@@ -3718,6 +4649,9 @@ img {
       if (handlers[id]) {
         handlers[id]();
       }
+      if (typeof updateTersineCalculations === 'function') {
+        updateTersineCalculations();
+      }
       saveState();
     });
 
@@ -3734,6 +4668,9 @@ img {
         }
         if (handlers[id]) {
           handlers[id]();
+        }
+        if (typeof updateTersineCalculations === 'function') {
+          updateTersineCalculations();
         }
         saveState();
       }
@@ -3794,6 +4731,9 @@ img {
     calcMaliyet();
     calcArsa();
     calcTersine();
+    if (typeof updateTersineCalculations === 'function') {
+      updateTersineCalculations();
+    }
     saveState();
 
     // Ana ekrandaki select'i de senkronize et
@@ -3817,6 +4757,9 @@ img {
         calcMaliyet();
         calcArsa();
         calcTersine();
+        if (typeof updateTersineCalculations === 'function') {
+          updateTersineCalculations();
+        }
         saveState();
         showToast(formatTR(numVal) + ' TL/m² birim fiyat seçildi');
       }
@@ -3868,6 +4811,9 @@ img {
         calcMaliyet();
         calcArsa();
         calcTersine();
+        if (typeof updateTersineCalculations === 'function') {
+          updateTersineCalculations();
+        }
         saveState();
         showToast('İnşaat alanı aktarıldı');
       }
@@ -4023,6 +4969,7 @@ img {
   var screensEl = document.getElementById('screens');
   var scrollPositions = {
     hesaplama: 0,
+    tersine: 0,
     maliyet: 0,
     hakkinda: 0
   };
@@ -4031,6 +4978,7 @@ img {
 
   function tabFromHash() {
     var h = (window.location.hash || '').replace(/^#/, '');
+    if (h === 'tersine' && isDesktopViewport()) return 'tersine';
     if (h === 'maliyet') return 'maliyet';
     if (h === 'hakkinda') return 'hakkinda';
     return 'hesaplama';
@@ -4041,7 +4989,11 @@ img {
   var btnTopReset = document.getElementById('BtnTopReset');
 
   function updateTitle(name) {
-    if (name === 'maliyet') {
+    if (name === 'tersine') {
+      document.title = 'Tersine Değer Hesaplama • değeR';
+      if (topbarTitleEl) topbarTitleEl.textContent = 'Tersine Değer Hesaplama — Bağımsız Bölüm & Gelir Dağılımı';
+      if (topbarSubtitleEl) topbarSubtitleEl.textContent = 'Konut ve ticari ünite bazlı satış geliri, inşaat alanı kontrolü ve tersine arsa değerlemesi';
+    } else if (name === 'maliyet') {
       document.title = '2026 Birim Maliyetler • değeR';
       if (topbarTitleEl) topbarTitleEl.textContent = '2026 Yapı Yaklaşık Birim Maliyetleri';
       if (topbarSubtitleEl) topbarSubtitleEl.textContent = 'Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Tebliği (Sayı: 33157)';
@@ -4060,7 +5012,10 @@ img {
   }
 
   function activateTab(name) {
-    if (name !== 'hesaplama' && name !== 'maliyet' && name !== 'hakkinda') {
+    if (name === 'tersine' && !isDesktopViewport()) {
+      name = 'hesaplama';
+    }
+    if (name !== 'hesaplama' && name !== 'tersine' && name !== 'maliyet' && name !== 'hakkinda') {
       name = 'hesaplama';
     }
 
@@ -4095,6 +5050,8 @@ img {
 
     if (name === 'maliyet') {
       renderMaliyetList(searchInput ? searchInput.value : '', currentMaliyetKat);
+    } else if (name === 'tersine' && typeof updateTersineCalculations === 'function') {
+      updateTersineCalculations();
     }
 
     // Hedef sekmenin kaydırma konumunu geri yükle
@@ -4151,26 +5108,48 @@ img {
   var tabbar = document.querySelector('.tabbar');
   if (tabbar) {
     tabbar.addEventListener('keydown', function (event) {
-      var index = tabs.indexOf(document.activeElement);
+      var navTabs = isDesktopViewport() ? tabs : tabs.filter(function (t) {
+        return !t.classList.contains('tab-pc-only');
+      });
+      var index = navTabs.indexOf(document.activeElement);
       if (index === -1) return;
 
       var nextIndex = null;
       if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-        nextIndex = (index + 1) % tabs.length;
+        nextIndex = (index + 1) % navTabs.length;
       } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        nextIndex = (index - 1 + tabs.length) % tabs.length;
+        nextIndex = (index - 1 + navTabs.length) % navTabs.length;
       } else if (event.key === 'Home') {
         nextIndex = 0;
       } else if (event.key === 'End') {
-        nextIndex = tabs.length - 1;
+        nextIndex = navTabs.length - 1;
       }
 
       if (nextIndex !== null) {
         event.preventDefault();
-        tabs[nextIndex].focus();
-        tabs[nextIndex].click();
+        navTabs[nextIndex].focus();
+        navTabs[nextIndex].click();
       }
     });
+  }
+
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    var desktopMediaQuery = window.matchMedia('(min-width: 1024px)');
+    var handleDesktopMediaChange = function () {
+      if (!isDesktopViewport() && currentTab === 'tersine') {
+        activateTab('hesaplama');
+        try {
+          if (window.history && window.history.replaceState && window.location.hash === '#tersine') {
+            window.history.replaceState(null, '', '#hesaplama');
+          }
+        } catch (err) {}
+      }
+    };
+    if (typeof desktopMediaQuery.addEventListener === 'function') {
+      desktopMediaQuery.addEventListener('change', handleDesktopMediaChange);
+    } else if (typeof desktopMediaQuery.addListener === 'function') {
+      desktopMediaQuery.addListener(handleDesktopMediaChange);
+    }
   }
 
   // Temizle butonu (Sil)
@@ -4207,7 +5186,12 @@ img {
     });
   }
 
-  window.addEventListener('pagehide', saveState);
+  window.addEventListener('pagehide', function () {
+    saveState();
+    if (typeof saveTersineState === 'function') {
+      saveTersineState();
+    }
+  });
 
   /* ---------- Başlangıç (Startup) ---------- */
 
@@ -4542,6 +5526,687 @@ img {
     return n < 10 ? '0' + n : String(n);
   }
 
+  /* ---------- PC Yalnızca Tersine Değer Hesaplama Sekmesi ---------- */
+  var tersineRows = [];
+  var tersineRowsBodyEl = document.getElementById('TersineRowsBody');
+  var tersineEmptyStateEl = document.getElementById('TersineEmptyState');
+  var btnTersineGoDeger = document.getElementById('BtnTersineGoDeger');
+  var btnTersineAddKonut = document.getElementById('BtnTersineAddKonut');
+  var btnTersineAddTicari = document.getElementById('BtnTersineAddTicari');
+  var btnTersineClear = document.getElementById('BtnTersineClear');
+
+  function round2(val) {
+    return Math.round(val * 100) / 100;
+  }
+
+  function createDefaultTersineRows() {
+    return [
+      { tur: 'konut', birimAlan: '', adet: '', birimFiyat: '' },
+      { tur: 'ticari', birimAlan: '', adet: '', birimFiyat: '' }
+    ];
+  }
+
+  function normalizeTersineTur(tur) {
+    return tur === 'ticari' ? 'ticari' : 'konut';
+  }
+
+  function normalizeTersineDecimal(raw) {
+    if (typeof raw !== 'string') return '';
+    var trimmed = raw.trim();
+    if (!trimmed) return '';
+    var n = toNumber(trimmed);
+    if (!isFinite(n) || n < 0) return '';
+    if (n === 0 && trimmed.replace(/[\s.,]/g, '') !== '') return '0,00';
+    return n > 0 ? formatTR(n) : '';
+  }
+
+  function normalizeTersineInt(raw) {
+    if (typeof raw !== 'string') return '';
+    var trimmed = raw.trim();
+    if (!trimmed) return '';
+    var n = Math.round(toNumber(trimmed));
+    if (!isFinite(n) || n < 0) return '';
+    if (n === 0 && trimmed.replace(/[\s.,]/g, '') !== '') return '0';
+    return n > 0 ? formatIntTR(n) : '';
+  }
+
+  function saveTersineState() {
+    var serialized = tersineRows.map(function (row) {
+      return {
+        tur: normalizeTersineTur(row.tur),
+        birimAlan: typeof row.birimAlan === 'string' ? row.birimAlan : '',
+        adet: typeof row.adet === 'string' ? row.adet : '',
+        birimFiyat: typeof row.birimFiyat === 'string' ? row.birimFiyat : ''
+      };
+    });
+    try {
+      localStorage.setItem(TERSINE_STORAGE_KEY, JSON.stringify(serialized));
+    } catch (err) {}
+  }
+
+  function restoreTersineState() {
+    var raw = null;
+    try {
+      raw = localStorage.getItem(TERSINE_STORAGE_KEY);
+    } catch (err) {
+      tersineRows = createDefaultTersineRows();
+      return;
+    }
+
+    if (raw === null) {
+      tersineRows = createDefaultTersineRows();
+      return;
+    }
+
+    try {
+      var parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        tersineRows = parsed.slice(0, 500).map(function (item) {
+          if (!item || typeof item !== 'object') {
+            return { tur: 'konut', birimAlan: '', adet: '', birimFiyat: '' };
+          }
+          return {
+            tur: normalizeTersineTur(item.tur),
+            birimAlan: normalizeTersineDecimal(typeof item.birimAlan === 'string' ? item.birimAlan : ''),
+            adet: normalizeTersineInt(typeof item.adet === 'string' ? item.adet : ''),
+            birimFiyat: normalizeTersineDecimal(typeof item.birimFiyat === 'string' ? item.birimFiyat : '')
+          };
+        });
+        return;
+      }
+    } catch (err) {}
+
+    tersineRows = createDefaultTersineRows();
+  }
+
+  function computeRowMetrics(row) {
+    var hasAlan = !isEmpty(row.birimAlan);
+    var hasAdet = !isEmpty(row.adet);
+    var hasFiyat = !isEmpty(row.birimFiyat);
+
+    var birimAlanVal = hasAlan ? Math.max(0, toNumber(row.birimAlan)) : 0;
+    var adetVal = hasAdet ? Math.max(0, Math.round(toNumber(row.adet))) : 0;
+    var birimFiyatVal = hasFiyat ? Math.max(0, toNumber(row.birimFiyat)) : 0;
+
+    var hasRowAlan = hasAlan && hasAdet;
+    var rowAlan = hasRowAlan ? round2(birimAlanVal * adetVal) : 0;
+    var hasRowBedel = hasRowAlan && hasFiyat;
+    var rowBedel = hasRowBedel ? round2(rowAlan * birimFiyatVal) : 0;
+
+    return {
+      tur: normalizeTersineTur(row.tur),
+      hasAlan: hasAlan,
+      hasAdet: hasAdet,
+      hasFiyat: hasFiyat,
+      hasRowAlan: hasRowAlan,
+      hasRowBedel: hasRowBedel,
+      birimAlanVal: birimAlanVal,
+      adetVal: adetVal,
+      birimFiyatVal: birimFiyatVal,
+      rowAlan: rowAlan,
+      rowBedel: rowBedel
+    };
+  }
+
+  function updateRowOutputDOM(tr, row) {
+    if (!tr) return;
+    var m = computeRowMetrics(row);
+    var outAlan = tr.querySelector('.tersine-out-alan');
+    var outBedel = tr.querySelector('.tersine-out-bedel');
+    if (outAlan) {
+      outAlan.value = m.hasRowAlan ? formatTR(m.rowAlan) : '';
+    }
+    if (outBedel) {
+      outBedel.value = m.hasRowBedel ? formatTR(m.rowBedel) : '';
+    }
+  }
+
+  function computeTersineSummary() {
+    var konutAdet = 0;
+    var konutAlan = 0;
+    var konutGelir = 0;
+    var ticariAdet = 0;
+    var ticariAlan = 0;
+    var ticariGelir = 0;
+
+    for (var i = 0; i < tersineRows.length; i += 1) {
+      var m = computeRowMetrics(tersineRows[i]);
+      if (m.tur === 'ticari') {
+        if (m.hasAdet) ticariAdet += m.adetVal;
+        if (m.hasRowAlan) ticariAlan += m.rowAlan;
+        if (m.hasRowBedel) ticariGelir += m.rowBedel;
+      } else {
+        if (m.hasAdet) konutAdet += m.adetVal;
+        if (m.hasRowAlan) konutAlan += m.rowAlan;
+        if (m.hasRowBedel) konutGelir += m.rowBedel;
+      }
+    }
+
+    konutAlan = round2(konutAlan);
+    konutGelir = round2(konutGelir);
+    ticariAlan = round2(ticariAlan);
+    ticariGelir = round2(ticariGelir);
+
+    var toplamAdet = konutAdet + ticariAdet;
+    var dagitilanAlan = round2(konutAlan + ticariAlan);
+    var genelToplamGelir = round2(konutGelir + ticariGelir);
+
+    var toplamInsaatAlan = !isEmpty(value('Tx_ToplamInsaatAlan')) ? Math.max(0, num('Tx_ToplamInsaatAlan')) : 0;
+    var hasInsaatSinir = toplamInsaatAlan > 0;
+    var isOverflow = hasInsaatSinir && (dagitilanAlan - toplamInsaatAlan > 0.005);
+    var overflowM2 = isOverflow ? round2(dagitilanAlan - toplamInsaatAlan) : 0;
+    var ortakAlan = hasInsaatSinir && !isOverflow ? round2(toplamInsaatAlan - dagitilanAlan) : 0;
+
+    return {
+      konutAdet: konutAdet,
+      konutAlan: konutAlan,
+      konutGelir: konutGelir,
+      ticariAdet: ticariAdet,
+      ticariAlan: ticariAlan,
+      ticariGelir: ticariGelir,
+      toplamAdet: toplamAdet,
+      dagitilanAlan: dagitilanAlan,
+      genelToplamGelir: genelToplamGelir,
+      toplamInsaatAlan: toplamInsaatAlan,
+      hasInsaatSinir: hasInsaatSinir,
+      isOverflow: isOverflow,
+      overflowM2: overflowM2,
+      ortakAlan: ortakAlan
+    };
+  }
+
+  function setText(id, txt) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = txt;
+  }
+
+  function setReadonlyVal(id, txt) {
+    var el = document.getElementById(id);
+    if (el) el.value = txt;
+  }
+
+  function updateTersineCalculations() {
+    var sum = computeTersineSummary();
+
+    // 1. Kaynak proje verileri (değeR sekmesinden)
+    var srcAlan = num('Tx_Alan');
+    var srcHesapInsaat = num('Tx_HesapInsaatAlan');
+    var srcBirimFiyat = num('Tx_BirimFiyat');
+    var srcMaliyet = num('Tx_ToplamInsaatMaliyet');
+    var srcKarOran = num('Tx_KarOran');
+
+    setText('TdSrc_ToplamInsaatAlan', sum.hasInsaatSinir ? formatTR(sum.toplamInsaatAlan) + ' m²' : '—');
+    if (sum.hasInsaatSinir) {
+      setText('TdSrc_InsaatNote', 'Ortak alanlar dahil bağımsız bölüm sınırı');
+    } else if (srcHesapInsaat > 0) {
+      setText('TdSrc_InsaatNote', 'değeR sekmesinde boş (Emsal: ' + formatTR(srcHesapInsaat) + ' m²)');
+    } else {
+      setText('TdSrc_InsaatNote', 'değeR sekmesinde henüz girilmedi');
+    }
+
+    setText('TdSrc_Alan', !isEmpty(value('Tx_Alan')) && srcAlan > 0 ? formatTR(srcAlan) + ' m²' : '—');
+    setText('TdSrc_BirimFiyat', !isEmpty(value('Tx_BirimFiyat')) && srcBirimFiyat > 0 ? formatTR(srcBirimFiyat) + ' TL/m²' : '—');
+    setText('TdSrc_ToplamMaliyet', !isEmpty(value('Tx_ToplamInsaatMaliyet')) ? formatTR(srcMaliyet) + ' TL' : '—');
+    setText('TdSrc_KarOran', !isEmpty(value('Tx_KarOran')) ? '%' + formatTR(srcKarOran) : '—');
+    setText('TdSrc_HesapInsaat', !isEmpty(value('Tx_HesapInsaatAlan')) && srcHesapInsaat > 0 ? formatTR(srcHesapInsaat) + ' m²' : '—');
+
+    // 2. İnşaat alanı kontrolü & Ortak alan ayrımı
+    var alertEl = document.getElementById('TdAreaAlert');
+    var alertTextEl = document.getElementById('TdAreaAlertText');
+    var noticeEl = document.getElementById('TdAreaNotice');
+    var meterBoxEl = document.getElementById('TdAreaMeter');
+    var konutBarEl = document.getElementById('TdMeterKonutBar');
+    var ticariBarEl = document.getElementById('TdMeterTicariBar');
+
+    if (alertEl && alertTextEl) {
+      if (sum.isOverflow) {
+        alertEl.hidden = false;
+        alertTextEl.textContent =
+          'Dağıtılan bağımsız bölüm alanları (' + formatTR(sum.dagitilanAlan) + ' m²), ' +
+          'değeR sekmesindeki toplam inşaat alanını (' + formatTR(sum.toplamInsaatAlan) + ' m²) ' +
+          formatTR(sum.overflowM2) + ' m² aşmaktadır. Birim alanları, adetleri veya toplam inşaat alanını gözden geçirin.';
+      } else {
+        alertEl.hidden = true;
+        alertTextEl.textContent = '';
+      }
+    }
+
+    if (noticeEl) {
+      noticeEl.hidden = !( !sum.hasInsaatSinir && sum.dagitilanAlan > 0 );
+    }
+
+    if (meterBoxEl) {
+      meterBoxEl.classList.toggle('is-over', sum.isOverflow);
+    }
+
+    setText('TdMeterBagimsiz', formatTR(sum.dagitilanAlan) + ' m²');
+    setText('TdMeterBreakdown', '(Konut: ' + formatTR(sum.konutAlan) + ' m² + Ticari: ' + formatTR(sum.ticariAlan) + ' m²)');
+    setText('TdMeterSinir', sum.hasInsaatSinir ? formatTR(sum.toplamInsaatAlan) + ' m²' : '—');
+
+    if (sum.hasInsaatSinir) {
+      if (sum.isOverflow) {
+        setText('TdMeterOrtakLabel', 'İnşaat Alanı Aşımı:');
+        setText('TdMeterOrtak', '+' + formatTR(sum.overflowM2) + ' m² (Ortak alan payı yok)');
+      } else {
+        var ortakPct = (sum.ortakAlan / sum.toplamInsaatAlan) * 100;
+        setText('TdMeterOrtakLabel', 'Ortak Alanlar / Kalan Alan (Satış Dışı):');
+        setText('TdMeterOrtak', formatTR(sum.ortakAlan) + ' m² (%' + formatTR(ortakPct) + ')');
+      }
+    } else {
+      setText('TdMeterOrtakLabel', 'Ortak Alanlar / Kalan Alan (Satış Dışı):');
+      setText('TdMeterOrtak', '—');
+    }
+
+    if (konutBarEl && ticariBarEl) {
+      if (sum.hasInsaatSinir && sum.dagitilanAlan > 0) {
+        if (sum.isOverflow) {
+          var totalBar = sum.konutAlan + sum.ticariAlan;
+          var kPct = totalBar > 0 ? (sum.konutAlan / totalBar) * 100 : 0;
+          var tPct = totalBar > 0 ? (sum.ticariAlan / totalBar) * 100 : 0;
+          konutBarEl.style.width = kPct.toFixed(2) + '%';
+          ticariBarEl.style.width = tPct.toFixed(2) + '%';
+        } else {
+          konutBarEl.style.width = Math.min(100, (sum.konutAlan / sum.toplamInsaatAlan) * 100).toFixed(2) + '%';
+          ticariBarEl.style.width = Math.min(100, (sum.ticariAlan / sum.toplamInsaatAlan) * 100).toFixed(2) + '%';
+        }
+      } else {
+        konutBarEl.style.width = '0%';
+        ticariBarEl.style.width = '0%';
+      }
+    }
+
+    // 3. Konut, Ticari & Genel Toplam kartları
+    var areaDenominator = sum.hasInsaatSinir ? sum.toplamInsaatAlan : sum.dagitilanAlan;
+    setText('TdSum_KonutAdet', formatIntTR(sum.konutAdet) + ' Adet');
+    setText('TdSum_KonutAlan', formatTR(sum.konutAlan) + ' m²');
+    setText('TdSum_KonutPay', areaDenominator > 0 ? '%' + formatTR((sum.konutAlan / areaDenominator) * 100) : '%0,00');
+    setText('TdSum_KonutOrtFiyat', sum.konutAlan > 0 && sum.konutGelir > 0 ? formatTR(sum.konutGelir / sum.konutAlan) + ' TL/m²' : '—');
+    setText('TdSum_KonutGelir', formatTR(sum.konutGelir) + ' TL');
+
+    setText('TdSum_TicariAdet', formatIntTR(sum.ticariAdet) + ' Adet');
+    setText('TdSum_TicariAlan', formatTR(sum.ticariAlan) + ' m²');
+    setText('TdSum_TicariPay', areaDenominator > 0 ? '%' + formatTR((sum.ticariAlan / areaDenominator) * 100) : '%0,00');
+    setText('TdSum_TicariOrtFiyat', sum.ticariAlan > 0 && sum.ticariGelir > 0 ? formatTR(sum.ticariGelir / sum.ticariAlan) + ' TL/m²' : '—');
+    setText('TdSum_TicariGelir', formatTR(sum.ticariGelir) + ' TL');
+
+    setText('TdSum_ToplamAdet', formatIntTR(sum.toplamAdet) + ' Adet');
+    setText('TdSum_BagimsizAlan', formatTR(sum.dagitilanAlan) + ' m²');
+    setText('TdSum_GenelGelir', formatTR(sum.genelToplamGelir) + ' TL');
+
+    var ortakRowEl = document.getElementById('TdSum_OrtakRow');
+    if (ortakRowEl) {
+      ortakRowEl.classList.toggle('tersine-sum-row--over', sum.isOverflow);
+    }
+    if (sum.hasInsaatSinir) {
+      if (sum.isOverflow) {
+        setText('TdSum_OrtakLabel', 'İnşaat Alanı Aşımı');
+        setText('TdSum_OrtakAlan', '+' + formatTR(sum.overflowM2) + ' m²');
+      } else {
+        setText('TdSum_OrtakLabel', 'Ortak Alanlar / Kalan Alan');
+        setText('TdSum_OrtakAlan', formatTR(sum.ortakAlan) + ' m²');
+      }
+    } else {
+      setText('TdSum_OrtakLabel', 'Ortak Alanlar / Kalan Alan');
+      setText('TdSum_OrtakAlan', '—');
+    }
+
+    // 4. Dağıtım gelirine dayalı tersine değerleme çıktıları
+    var hasRevenue = sum.genelToplamGelir > 0;
+    var hasKarOran = !isEmpty(value('Tx_KarOran'));
+    var hasMaliyet = !isEmpty(value('Tx_ToplamInsaatMaliyet'));
+
+    var karPayiVal = hasRevenue && hasKarOran ? (sum.genelToplamGelir * srcKarOran) / 100 : null;
+    setReadonlyVal('TdRes_KarPayi', karPayiVal !== null ? formatTR(karPayiVal) : '');
+
+    var arsaToplamVal = hasRevenue && hasKarOran && hasMaliyet ? (sum.genelToplamGelir - karPayiVal - srcMaliyet) : null;
+    setReadonlyVal('TdRes_ArsaToplam', arsaToplamVal !== null ? formatTR(arsaToplamVal) : '');
+
+    var arsaBirimVal = arsaToplamVal !== null && srcAlan > 0 ? (arsaToplamVal / srcAlan) : null;
+    setReadonlyVal('TdRes_ArsaBirim', arsaBirimVal !== null ? formatTR(arsaBirimVal) : '');
+
+    var burutGelirVal = hasRevenue && sum.hasInsaatSinir ? (sum.genelToplamGelir / sum.toplamInsaatAlan) : null;
+    setReadonlyVal('TdRes_BurutGelir', burutGelirVal !== null ? formatTR(burutGelirVal) : '');
+
+    var bagimsizOrtVal = hasRevenue && sum.dagitilanAlan > 0 ? (sum.genelToplamGelir / sum.dagitilanAlan) : null;
+    setReadonlyVal('TdRes_BagimsizOrt', bagimsizOrtVal !== null ? formatTR(bagimsizOrtVal) : '');
+
+    var hasHedef = !isEmpty(value('Tx_TersineToplamGelir'));
+    var hedefFarkVal = hasRevenue && hasHedef ? (sum.genelToplamGelir - num('Tx_TersineToplamGelir')) : null;
+    setReadonlyVal('TdRes_HedefFark', hedefFarkVal !== null ? formatTR(hedefFarkVal) : '');
+  }
+
+  function attachLivePrevStateListeners(el) {
+    function updatePrevState() {
+      el._prevVal = el.value;
+      el._prevCursor = el.selectionStart;
+    }
+    el.addEventListener('keydown', updatePrevState);
+    el.addEventListener('keyup', updatePrevState);
+    el.addEventListener('click', updatePrevState);
+    el.addEventListener('focus', updatePrevState);
+  }
+
+  function focusNextTersineInput(currentEl) {
+    if (!tersineRowsBodyEl) return;
+    var inputs = Array.prototype.slice.call(
+      tersineRowsBodyEl.querySelectorAll('input.tersine-input:not([readonly])')
+    );
+    var idx = inputs.indexOf(currentEl);
+    if (idx === -1 || idx + 1 >= inputs.length) return;
+    var next = inputs[idx + 1];
+    next.focus();
+    try {
+      next.setSelectionRange(next.value.length, next.value.length);
+    } catch (err) {}
+  }
+
+  function renderTersineRows() {
+    if (!tersineRowsBodyEl) return;
+    tersineRowsBodyEl.innerHTML = '';
+
+    if (tersineEmptyStateEl) {
+      tersineEmptyStateEl.hidden = tersineRows.length > 0;
+    }
+
+    var frag = document.createDocumentFragment();
+
+    tersineRows.forEach(function (row, idx) {
+      var tr = document.createElement('tr');
+      var rowNum = idx + 1;
+      tr.className = row.tur === 'ticari' ? 'tersine-row--ticari' : 'tersine-row--konut';
+
+      // 1. Satır numarası
+      var tdNum = document.createElement('td');
+      tdNum.className = 'tersine-row-num';
+      tdNum.textContent = String(rowNum);
+      tr.appendChild(tdNum);
+
+      // 2. Kullanım türü
+      var tdTur = document.createElement('td');
+      var sel = document.createElement('select');
+      sel.className = 'tersine-select';
+      sel.setAttribute('aria-label', 'Satır ' + rowNum + ' — Kullanım Türü');
+      var optKonut = document.createElement('option');
+      optKonut.value = 'konut';
+      optKonut.textContent = 'Konut';
+      var optTicari = document.createElement('option');
+      optTicari.value = 'ticari';
+      optTicari.textContent = 'Ticari';
+      sel.appendChild(optKonut);
+      sel.appendChild(optTicari);
+      sel.value = normalizeTersineTur(row.tur);
+      sel.addEventListener('change', function () {
+        row.tur = normalizeTersineTur(sel.value);
+        tr.className = row.tur === 'ticari' ? 'tersine-row--ticari' : 'tersine-row--konut';
+        updateTersineCalculations();
+        saveTersineState();
+      });
+      tdTur.appendChild(sel);
+      tr.appendChild(tdTur);
+
+      // 3. Birim alan (m²)
+      var tdBirimAlan = document.createElement('td');
+      var inpBirimAlan = document.createElement('input');
+      inpBirimAlan.type = 'text';
+      inpBirimAlan.className = 'tersine-input';
+      inpBirimAlan.inputMode = 'decimal';
+      inpBirimAlan.autocomplete = 'off';
+      inpBirimAlan.spellcheck = false;
+      inpBirimAlan.placeholder = '0,00';
+      inpBirimAlan.value = row.birimAlan || '';
+      inpBirimAlan.setAttribute('aria-label', 'Satır ' + rowNum + ' — Birim Alan (m²)');
+      attachLivePrevStateListeners(inpBirimAlan);
+      inpBirimAlan.addEventListener('input', function (event) {
+        formatInputLive(inpBirimAlan, event);
+        row.birimAlan = inpBirimAlan.value;
+        updateRowOutputDOM(tr, row);
+        updateTersineCalculations();
+        saveTersineState();
+      });
+      inpBirimAlan.addEventListener('blur', function () {
+        row.birimAlan = normalizeTersineDecimal(inpBirimAlan.value);
+        inpBirimAlan.value = row.birimAlan;
+        updateRowOutputDOM(tr, row);
+        updateTersineCalculations();
+        saveTersineState();
+      });
+      inpBirimAlan.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          focusNextTersineInput(inpBirimAlan);
+        }
+      });
+      tdBirimAlan.appendChild(inpBirimAlan);
+      tr.appendChild(tdBirimAlan);
+
+      // 4. Adet
+      var tdAdet = document.createElement('td');
+      var inpAdet = document.createElement('input');
+      inpAdet.type = 'text';
+      inpAdet.className = 'tersine-input';
+      inpAdet.inputMode = 'numeric';
+      inpAdet.autocomplete = 'off';
+      inpAdet.spellcheck = false;
+      inpAdet.placeholder = '0';
+      inpAdet.value = row.adet || '';
+      inpAdet.setAttribute('aria-label', 'Satır ' + rowNum + ' — Adet');
+      attachLivePrevStateListeners(inpAdet);
+      inpAdet.addEventListener('input', function (event) {
+        formatIntLive(inpAdet, event);
+        row.adet = inpAdet.value;
+        updateRowOutputDOM(tr, row);
+        updateTersineCalculations();
+        saveTersineState();
+      });
+      inpAdet.addEventListener('blur', function () {
+        row.adet = normalizeTersineInt(inpAdet.value);
+        inpAdet.value = row.adet;
+        updateRowOutputDOM(tr, row);
+        updateTersineCalculations();
+        saveTersineState();
+      });
+      inpAdet.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          focusNextTersineInput(inpAdet);
+        }
+      });
+      tdAdet.appendChild(inpAdet);
+      tr.appendChild(tdAdet);
+
+      // 5. Toplam alan (m²) - otomatik hesaplanan salt okunur alan
+      var tdToplamAlan = document.createElement('td');
+      var inpToplamAlan = document.createElement('input');
+      inpToplamAlan.type = 'text';
+      inpToplamAlan.className = 'tersine-input tersine-out-alan';
+      inpToplamAlan.readOnly = true;
+      inpToplamAlan.setAttribute('aria-readonly', 'true');
+      inpToplamAlan.tabIndex = -1;
+      inpToplamAlan.setAttribute('aria-label', 'Satır ' + rowNum + ' — Toplam Alan (m²)');
+      tdToplamAlan.appendChild(inpToplamAlan);
+      tr.appendChild(tdToplamAlan);
+
+      // 6. Satış birim fiyatı (TL/m²)
+      var tdFiyat = document.createElement('td');
+      var inpFiyat = document.createElement('input');
+      inpFiyat.type = 'text';
+      inpFiyat.className = 'tersine-input';
+      inpFiyat.inputMode = 'decimal';
+      inpFiyat.autocomplete = 'off';
+      inpFiyat.spellcheck = false;
+      inpFiyat.placeholder = '0,00';
+      inpFiyat.value = row.birimFiyat || '';
+      inpFiyat.setAttribute('aria-label', 'Satır ' + rowNum + ' — Satış Birim Fiyatı (TL/m²)');
+      attachLivePrevStateListeners(inpFiyat);
+      inpFiyat.addEventListener('input', function (event) {
+        formatInputLive(inpFiyat, event);
+        row.birimFiyat = inpFiyat.value;
+        updateRowOutputDOM(tr, row);
+        updateTersineCalculations();
+        saveTersineState();
+      });
+      inpFiyat.addEventListener('blur', function () {
+        row.birimFiyat = normalizeTersineDecimal(inpFiyat.value);
+        inpFiyat.value = row.birimFiyat;
+        updateRowOutputDOM(tr, row);
+        updateTersineCalculations();
+        saveTersineState();
+      });
+      inpFiyat.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          focusNextTersineInput(inpFiyat);
+        }
+      });
+      tdFiyat.appendChild(inpFiyat);
+      tr.appendChild(tdFiyat);
+
+      // 7. Toplam satış bedeli (TL) - otomatik hesaplanan salt okunur alan
+      var tdBedel = document.createElement('td');
+      var inpBedel = document.createElement('input');
+      inpBedel.type = 'text';
+      inpBedel.className = 'tersine-input tersine-out-bedel';
+      inpBedel.readOnly = true;
+      inpBedel.setAttribute('aria-readonly', 'true');
+      inpBedel.tabIndex = -1;
+      inpBedel.setAttribute('aria-label', 'Satır ' + rowNum + ' — Toplam Satış Bedeli (TL)');
+      tdBedel.appendChild(inpBedel);
+      tr.appendChild(tdBedel);
+
+      // 8. Satır sil butonu
+      var tdDel = document.createElement('td');
+      tdDel.style.textAlign = 'center';
+      var btnDel = document.createElement('button');
+      btnDel.type = 'button';
+      btnDel.className = 'tersine-row-del';
+      btnDel.title = 'Satırı sil';
+      btnDel.setAttribute('aria-label', 'Satır ' + rowNum + ' — Satırı Sil');
+      btnDel.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>';
+      btnDel.addEventListener('click', function () {
+        deleteTersineRow(idx);
+      });
+      tdDel.appendChild(btnDel);
+      tr.appendChild(tdDel);
+
+      updateRowOutputDOM(tr, row);
+      frag.appendChild(tr);
+    });
+
+    tersineRowsBodyEl.appendChild(frag);
+  }
+
+  function addTersineRow(tur) {
+    if (tersineRows.length >= 500) {
+      showToast('En fazla 500 satır eklenebilir');
+      return;
+    }
+    tersineRows.push({
+      tur: normalizeTersineTur(tur),
+      birimAlan: '',
+      adet: '',
+      birimFiyat: ''
+    });
+    renderTersineRows();
+    updateTersineCalculations();
+    saveTersineState();
+
+    if (tersineRowsBodyEl) {
+      var rows = tersineRowsBodyEl.querySelectorAll('tr');
+      var lastRow = rows.length ? rows[rows.length - 1] : null;
+      var firstInp = lastRow ? lastRow.querySelector('input.tersine-input:not([readonly])') : null;
+      if (firstInp) firstInp.focus();
+    }
+  }
+
+  function deleteTersineRow(idx) {
+    if (idx < 0 || idx >= tersineRows.length) return;
+    tersineRows.splice(idx, 1);
+    renderTersineRows();
+    updateTersineCalculations();
+    saveTersineState();
+  }
+
+  function clearTersineRows() {
+    tersineRows = createDefaultTersineRows();
+    renderTersineRows();
+    updateTersineCalculations();
+    saveTersineState();
+    showToast('Bağımsız bölüm dağılım satırları temizlendi');
+  }
+
+  function applyImportedTersine(rows, hasTersine) {
+    if (hasTersine && Array.isArray(rows)) {
+      tersineRows = rows.map(function (r) {
+        return {
+          tur: normalizeTersineTur(r.tur),
+          birimAlan: normalizeTersineDecimal(r.birimAlan),
+          adet: normalizeTersineInt(r.adet),
+          birimFiyat: normalizeTersineDecimal(r.birimFiyat)
+        };
+      });
+    } else {
+      tersineRows = createDefaultTersineRows();
+    }
+    renderTersineRows();
+    updateTersineCalculations();
+    saveTersineState();
+  }
+
+  function buildTersineExportSnapshot() {
+    var rowsSnap = tersineRows.map(function (row) {
+      var m = computeRowMetrics(row);
+      return {
+        tur: m.tur,
+        birimAlan: normalizeTersineDecimal(row.birimAlan || ''),
+        adet: normalizeTersineInt(row.adet || ''),
+        toplamAlan: m.hasRowAlan ? formatTR(m.rowAlan) : '',
+        birimFiyat: normalizeTersineDecimal(row.birimFiyat || ''),
+        toplamBedel: m.hasRowBedel ? formatTR(m.rowBedel) : ''
+      };
+    });
+    var sum = computeTersineSummary();
+    return {
+      rows: rowsSnap,
+      summary: {
+        kaynakToplamInsaatAlan: sum.hasInsaatSinir ? formatTR(sum.toplamInsaatAlan) : '',
+        konutAdet: formatIntTR(sum.konutAdet),
+        konutAlan: formatTR(sum.konutAlan),
+        konutGelir: formatTR(sum.konutGelir),
+        ticariAdet: formatIntTR(sum.ticariAdet),
+        ticariAlan: formatTR(sum.ticariAlan),
+        ticariGelir: formatTR(sum.ticariGelir),
+        dagitilanBagimsizAlan: formatTR(sum.dagitilanAlan),
+        ortakKalanAlan: sum.hasInsaatSinir && !sum.isOverflow ? formatTR(sum.ortakAlan) : '',
+        genelToplamGelir: formatTR(sum.genelToplamGelir),
+        alanAsimiVar: sum.isOverflow
+      }
+    };
+  }
+
+  if (btnTersineGoDeger) {
+    btnTersineGoDeger.addEventListener('click', function () {
+      activateTab('hesaplama');
+      try {
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', '#hesaplama');
+        }
+      } catch (err) {}
+    });
+  }
+  if (btnTersineAddKonut) {
+    btnTersineAddKonut.addEventListener('click', function () {
+      addTersineRow('konut');
+    });
+  }
+  if (btnTersineAddTicari) {
+    btnTersineAddTicari.addEventListener('click', function () {
+      addTersineRow('ticari');
+    });
+  }
+  if (btnTersineClear) {
+    btnTersineClear.addEventListener('click', clearTersineRows);
+  }
+
   function buildExportTxtContent() {
     var now = new Date();
     var localDate =
@@ -4551,13 +6216,16 @@ img {
     FIELD_IDS.forEach(function (id) {
       snapshot[id] = value(id);
     });
+    var tersineSnap = buildTersineExportSnapshot();
     var payload = {
       app: 'degeR',
       format: DATA_FILE_FORMAT,
       version: DATA_FILE_VERSION,
       storageKey: STORAGE_KEY,
       exportedAt: now.toISOString(),
-      fields: snapshot
+      fields: snapshot,
+      tersineDagilim: tersineSnap.rows,
+      tersineOzet: tersineSnap.summary
     };
     return [
       '# değeR — Veri Dışa Aktarım Dosyası',
@@ -4605,6 +6273,8 @@ img {
     var parsed = Number(normalized);
     return typeof parsed === 'number' && !isNaN(parsed) && isFinite(parsed);
   }
+
+  var TERSINE_ROW_ALLOWED_KEYS = ['tur', 'birimAlan', 'adet', 'toplamAlan', 'birimFiyat', 'toplamBedel'];
 
   function validateImportContent(rawText) {
     if (typeof rawText !== 'string') {
@@ -4681,7 +6351,85 @@ img {
       validatedFields[id] = val.trim();
     }
 
-    return { ok: true, fields: validatedFields };
+    // Opsiyonel Tersine Değer Dağılımı doğrulaması (eski dosyalarla geriye dönük tam uyum)
+    var hasTersineDagilim = Object.prototype.hasOwnProperty.call(payload, 'tersineDagilim');
+    var validatedTersineRows = null;
+
+    if (hasTersineDagilim) {
+      if (!Array.isArray(payload.tersineDagilim)) {
+        return { ok: false, error: 'Dosyadaki tersine değer dağılım verisi bozuk. Mevcut verileriniz korundu.' };
+      }
+      if (payload.tersineDagilim.length > 500) {
+        return { ok: false, error: 'Dosyadaki tersine değer satır sayısı sınırın üzerinde. Mevcut verileriniz korundu.' };
+      }
+
+      validatedTersineRows = [];
+      for (var r = 0; r < payload.tersineDagilim.length; r += 1) {
+        var rowItem = payload.tersineDagilim[r];
+        if (!rowItem || typeof rowItem !== 'object' || Array.isArray(rowItem)) {
+          return { ok: false, error: 'Tersine değer dağılımında geçersiz satır yapısı bulundu. Mevcut verileriniz korundu.' };
+        }
+        var rowKeys = Object.keys(rowItem);
+        for (var rk = 0; rk < rowKeys.length; rk += 1) {
+          if (TERSINE_ROW_ALLOWED_KEYS.indexOf(rowKeys[rk]) === -1) {
+            return { ok: false, error: 'Tersine değer dağılımında tanımsız alan bulundu (' + rowKeys[rk] + '). Mevcut verileriniz korundu.' };
+          }
+        }
+        if (rowItem.tur !== 'konut' && rowItem.tur !== 'ticari') {
+          return { ok: false, error: 'Tersine değer satırında geçersiz kullanım türü bulundu. Mevcut verileriniz korundu.' };
+        }
+        if (
+          typeof rowItem.birimAlan !== 'string' ||
+          typeof rowItem.adet !== 'string' ||
+          typeof rowItem.birimFiyat !== 'string'
+        ) {
+          return { ok: false, error: 'Tersine değer satırında eksik veya geçersiz veri tipi bulundu. Mevcut verileriniz korundu.' };
+        }
+        if (
+          !isValidFieldNumberString(rowItem.birimAlan) ||
+          !isValidFieldNumberString(rowItem.adet) ||
+          !isValidFieldNumberString(rowItem.birimFiyat)
+        ) {
+          return { ok: false, error: 'Tersine değer satırında geçersiz sayısal değer bulundu. Mevcut verileriniz korundu.' };
+        }
+        if (
+          (Object.prototype.hasOwnProperty.call(rowItem, 'toplamAlan') && !isValidFieldNumberString(rowItem.toplamAlan)) ||
+          (Object.prototype.hasOwnProperty.call(rowItem, 'toplamBedel') && !isValidFieldNumberString(rowItem.toplamBedel))
+        ) {
+          return { ok: false, error: 'Tersine değer satırında geçersiz toplam tutar/alan bulundu. Mevcut verileriniz korundu.' };
+        }
+        var nBirimAlan = toNumber(rowItem.birimAlan);
+        var nAdet = toNumber(rowItem.adet);
+        var nBirimFiyat = toNumber(rowItem.birimFiyat);
+        if (nBirimAlan < 0 || nAdet < 0 || nBirimFiyat < 0) {
+          return { ok: false, error: 'Tersine değer satırında negatif değer olamaz. Mevcut verileriniz korundu.' };
+        }
+        if (rowItem.adet.trim() !== '' && Math.abs(nAdet - Math.round(nAdet)) > 1e-9) {
+          return { ok: false, error: 'Tersine değer satırında adet değeri tam sayı olmalıdır. Mevcut verileriniz korundu.' };
+        }
+
+        validatedTersineRows.push({
+          tur: rowItem.tur,
+          birimAlan: rowItem.birimAlan.trim(),
+          adet: rowItem.adet.trim(),
+          birimFiyat: rowItem.birimFiyat.trim()
+        });
+      }
+    }
+
+    if (
+      Object.prototype.hasOwnProperty.call(payload, 'tersineOzet') &&
+      (!payload.tersineOzet || typeof payload.tersineOzet !== 'object' || Array.isArray(payload.tersineOzet))
+    ) {
+      return { ok: false, error: 'Dosyadaki tersine değer özet verisi bozuk. Mevcut verileriniz korundu.' };
+    }
+
+    return {
+      ok: true,
+      fields: validatedFields,
+      hasTersineDagilim: hasTersineDagilim,
+      tersineDagilim: validatedTersineRows
+    };
   }
 
   function applyImportedFields(validatedFields) {
@@ -4755,10 +6503,12 @@ img {
       }
       hideTransferWarning();
       applyImportedFields(result.fields);
-      activateTab('hesaplama');
+      applyImportedTersine(result.tersineDagilim, result.hasTersineDagilim);
+      var targetAfterImport = (currentTab === 'tersine' && isDesktopViewport()) ? 'tersine' : 'hesaplama';
+      activateTab(targetAfterImport);
       try {
         if (window.history && window.history.replaceState) {
-          window.history.replaceState(null, '', '#hesaplama');
+          window.history.replaceState(null, '', '#' + targetAfterImport);
         }
       } catch (err) {}
       showToast('Veriler dosyadan başarıyla içe aktarıldı');
@@ -4788,6 +6538,8 @@ img {
     });
   }
 
+  restoreTersineState();
+  renderTersineRows();
   restoreState();
   renderMaliyetList('', 'ALL');
   activateTab(tabFromHash());
